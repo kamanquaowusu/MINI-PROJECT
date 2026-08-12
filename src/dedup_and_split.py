@@ -8,7 +8,7 @@ Takes unified_sms.csv and produces train.csv / val.csv / test.csv such that:
   - the label balance (legitimate vs phishing) is kept similar across
     train/val/test
 
-Output files go to /home/claude/momo_project/
+Output files go to data/processed/
 """
 
 import re
@@ -16,8 +16,8 @@ import hashlib
 import pandas as pd
 from sklearn.model_selection import StratifiedGroupKFold
 
-INPUT_PATH = "/home/claude/momo_project/unified_sms.csv"
-OUT_DIR = "/home/claude/momo_project"
+INPUT_PATH = "data/processed/unified_sms.csv"
+OUT_DIR = "data/processed"
 
 df = pd.read_csv(INPUT_PATH)
 print(f"Loaded {len(df)} rows")

@@ -26,7 +26,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.metrics import precision_recall_fscore_support, classification_report
 
-DATA_DIR = "/home/claude/momo_project"
+DATA_DIR = "data/processed"
+MODEL_DIR = "models"
 
 train = pd.read_csv(f"{DATA_DIR}/train.csv")
 val = pd.read_csv(f"{DATA_DIR}/val.csv")
@@ -182,8 +183,8 @@ joblib.dump({
     "T_LOW": T_LOW, "T_HIGH": T_HIGH,
     "HIGH_SEVERITY_CATEGORIES": HIGH_SEVERITY_CATEGORIES,
     "SEVERITY_OVERRIDE_MIN_PROB": SEVERITY_OVERRIDE_MIN_PROB,
-}, f"{DATA_DIR}/triage_model.joblib")
-print(f"\nSaved model + thresholds to {DATA_DIR}/triage_model.joblib")
+}, f"{MODEL_DIR}/triage_model.joblib")
+print(f"\nSaved model + thresholds to {MODEL_DIR}/triage_model.joblib")
 
 # Save the test set with its bands for inspection.
 test[["text", "category", "label", "scam_proba", "band"]].to_csv(

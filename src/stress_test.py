@@ -29,7 +29,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import precision_recall_fscore_support, roc_auc_score
 
-DATA_DIR = "/home/claude/momo_project"
+DATA_DIR = "data/processed"
 
 train = pd.read_csv(f"{DATA_DIR}/train.csv")
 test = pd.read_csv(f"{DATA_DIR}/test.csv")

@@ -14,7 +14,7 @@ Given a RAW sms string, it:
 
 Usage:
     from predict import TriageClassifier
-    clf = TriageClassifier("triage_model.joblib")
+    clf = TriageClassifier("models/triage_model.joblib")
     result = clf.classify("Dear customer, your MoMo was reversed. Refund now: bit.ly/x")
     # -> {"band": "...", "scam_probability": 0.97, "reasons": [...]}
 
@@ -34,7 +34,7 @@ except Exception:
 
 
 class TriageClassifier:
-    def __init__(self, model_path="triage_model.joblib"):
+    def __init__(self, model_path="models/triage_model.joblib"):
         bundle = joblib.load(model_path)
         self.word_vec = bundle["word_vec"]
         self.char_vec = bundle["char_vec"]
@@ -95,7 +95,7 @@ class TriageClassifier:
 
 
 if __name__ == "__main__":
-    clf = TriageClassifier("triage_model.joblib")
+    clf = TriageClassifier("models/triage_model.joblib")
     samples = [
         "Confirmed. You have received GHS50.00 from KWAME. Your new balance is GHS212.30.",
         "URGENT: Your MoMo wallet is blocked. Verify your PIN now at momo-verify.gh to unlock.",

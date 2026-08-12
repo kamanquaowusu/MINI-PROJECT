@@ -18,8 +18,8 @@ Every kept row ends up with these columns, no matter which file it came from:
 import json
 import pandas as pd
 
-UPLOAD_DIR = "/mnt/user-data/uploads"
-OUTPUT_PATH = "/home/claude/momo_project/unified_sms.csv"
+UPLOAD_DIR = "data/raw"
+OUTPUT_PATH = "data/processed/unified_sms.csv"
 
 # Every row's normalized_text we've already added, so file 3 can check
 # against it before adding anything.
@@ -99,12 +99,12 @@ print(f"  added {count_csv} SMS rows from csv "
 
 
 # ---------------------------------------------------------------------------
-# STEP 3: momo_sms_dataset_generated__1_.jsonl (only NEW rows, dedup by text)
+# STEP 3: momo_sms_dataset_generated.jsonl (only NEW rows, dedup by text)
 # ---------------------------------------------------------------------------
-print("Loading momo_sms_dataset_generated__1_.jsonl ...")
+print("Loading momo_sms_dataset_generated.jsonl ...")
 count_gen_added = 0
 count_gen_skipped = 0
-with open(f"{UPLOAD_DIR}/momo_sms_dataset_generated__1_.jsonl", encoding="utf-8") as f:
+with open(f"{UPLOAD_DIR}/momo_sms_dataset_generated.jsonl", encoding="utf-8") as f:
     for line in f:
         line = line.strip()
         if not line:
@@ -133,7 +133,7 @@ print(f"  added {count_gen_added} new rows, skipped {count_gen_skipped} duplicat
 
 # ---------------------------------------------------------------------------
 # STEP 4: obfuscation_validation_set.jsonl -- deliberately NOT loaded here.
-# It stays untouched in /mnt/user-data/uploads for a separate evaluation script.
+# It stays untouched in data/raw for a separate evaluation script.
 # ---------------------------------------------------------------------------
 print("Skipping obfuscation_validation_set.jsonl on purpose (held-out test set)")
 
