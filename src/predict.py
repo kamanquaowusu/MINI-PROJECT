@@ -1,7 +1,7 @@
 """
 predict.py
 
-Inference wrapper for the three-tier MoMo smishing triage model.
+Inference wrapper for the two-tier MoMo smishing triage model.
 
 Given a RAW sms string, it:
   1. normalises it (NFKC + confusable folding + invisible-char stripping)
@@ -10,7 +10,7 @@ Given a RAW sms string, it:
   2. vectorises it with the fitted TF-IDF vectorisers
   3. gets a calibrated scam-probability from the saved classifier
   4. maps that probability (plus a category severity override) to a band:
-        safe | suspicious | dangerous
+        safe | suspicious
 
 Usage:
     from predict import TriageClassifier
@@ -70,7 +70,7 @@ class TriageClassifier:
 
         reasons = []
         if proba >= self.T_HIGH:
-            band = "dangerous"
+            band = "suspicious"
             reasons.append(f"high scam probability ({proba:.2f})")
         elif proba < self.T_LOW:
             band = "safe"
@@ -79,7 +79,6 @@ class TriageClassifier:
             band = "suspicious"
             reasons.append(f"uncertain scam probability ({proba:.2f})")
             if category in self.HIGH_SEVERITY and proba >= self.OVERRIDE_MIN:
-                band = "dangerous"
                 reasons.append(f"severity override: high-risk category '{category}'")
 
         if flags["obfuscation_suspected"]:

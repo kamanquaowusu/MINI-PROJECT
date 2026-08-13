@@ -6,3 +6,10 @@ __pycache__/
 .claude/
 .agents/
 skills-lock.json
+
+# SafeMoMo app -- runtime shadow-mode logs (contain redacted user text; not
+# for version control) and frontend build artifacts
+data/shadow/
+web/node_modules/
+web/dist/
+.pytest_cache/

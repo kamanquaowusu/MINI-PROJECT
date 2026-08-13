@@ -1,0 +1,105 @@
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #F4F6F8;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  color: #0B0B0E;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: #4FA3FF;
+  text-decoration: none;
+}
+a:hover {
+  color: #0F766E;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+textarea, input {
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+button:focus-visible,
+textarea:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #0F766E;
+  outline-offset: 2px;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@keyframes sm-shimmer {
+  0% { background-position: -320px 0; }
+  100% { background-position: 320px 0; }
+}
+
+@keyframes sm-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.96); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+.shimmer-bar {
+  background: linear-gradient(90deg, #E9EDF1 0%, #DCE2E8 50%, #E9EDF1 100%);
+  background-size: 320px 100%;
+  animation: sm-shimmer 1.6s linear infinite;
+}
+
+.pulse-circle {
+  animation: sm-pulse 1.8s ease-in-out infinite;
+}
+
+.sm-app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 20px 56px;
+}
+
+.sm-card {
+  background: #F4F6F8;
+  border: 1px solid #DDE3E9;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.sm-screen-body {
+  flex: 1;
+  padding: 4px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
