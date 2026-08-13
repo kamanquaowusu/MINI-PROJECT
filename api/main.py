@@ -28,6 +28,8 @@ from api.schemas import (
     HealthResponse,
     ObfuscationDetail,
     Reason,
+    ReportRequest,
+    ReportResponse,
     ShadowConfusion,
     ShadowSummaryResponse,
 )
@@ -180,6 +182,29 @@ def submit_feedback(req: FeedbackRequest):
         user_label=user_label,
         agreement=agreement,
         message="Thanks — recorded. This helps the pilot.",
+    )
+
+
+@app.post("/api/report", response_model=ReportResponse)
+def submit_report(req: ReportRequest):
+    message_redacted, _ = redact(req.message)
+
+    report_id = _new_id("rpt")
+    record = {
+        "schema_version": config.SCHEMA_VERSION,
+        "report_id": report_id,
+        "check_id": req.check_id,
+        "ts": datetime.now(timezone.utc).isoformat(),
+        "message_redacted": message_redacted,
+        "phone": req.phone,
+        "email": req.email,
+    }
+    store.append_report(record)
+
+    return ReportResponse(
+        recorded=True,
+        report_id=report_id,
+        message="Thanks — your report has been received. Our team will review it.",
     )
 
 

@@ -19,6 +19,7 @@ from api import config
 
 CHECKS_FILE = "checks.jsonl"
 FEEDBACK_FILE = "feedback.jsonl"
+REPORTS_FILE = "reports.jsonl"
 
 
 def _shadow_dir() -> Path:
@@ -44,6 +45,10 @@ def append_check(record: Dict) -> None:
 
 def append_feedback(record: Dict) -> None:
     _append(FEEDBACK_FILE, record)
+
+
+def append_report(record: Dict) -> None:
+    _append(REPORTS_FILE, record)
 
 
 def _read_all(filename: str):

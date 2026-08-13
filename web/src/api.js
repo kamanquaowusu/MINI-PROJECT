@@ -40,3 +40,15 @@ export function sendFeedback({ checkId, verdict, note }) {
 export function fetchHealth() {
   return request('/api/health', { method: 'GET' });
 }
+
+export function submitReport({ message, phone, email, checkId }) {
+  return request('/api/report', {
+    method: 'POST',
+    body: JSON.stringify({
+      message,
+      phone: phone || null,
+      email: email || null,
+      check_id: checkId ?? null,
+    }),
+  });
+}

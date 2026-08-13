@@ -65,6 +65,19 @@ class FeedbackResponse(BaseModel):
     message: str
 
 
+class ReportRequest(BaseModel):
+    message: str = Field(..., min_length=1, max_length=1600)
+    phone: Optional[str] = Field(None, max_length=32)
+    email: Optional[str] = Field(None, max_length=254)
+    check_id: Optional[str] = None
+
+
+class ReportResponse(BaseModel):
+    recorded: bool
+    report_id: str
+    message: str
+
+
 class HealthResponse(BaseModel):
     status: str
     model_loaded: bool
