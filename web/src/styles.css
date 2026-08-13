@@ -1,5 +1,13 @@
 :root {
   color-scheme: light;
+  --sm-teal: #0F766E;
+  --sm-teal-dark: #0B5C56;
+  --sm-danger: #DC2626;
+  --sm-danger-dark: #B91C1C;
+  --sm-border: #DDE3E9;
+  --sm-border-strong: #C7D0D8;
+  --sm-surface: #FFFFFF;
+  --sm-surface-hover: #F4F6F8;
 }
 
 * {
@@ -11,16 +19,31 @@ html, body {
   padding: 0;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background: #F4F6F8;
   font-family: 'DM Sans', system-ui, sans-serif;
   color: #0B0B0E;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 a {
   color: #4FA3FF;
   text-decoration: none;
+  transition: color 150ms ease-out;
 }
 a:hover {
   color: #0F766E;
@@ -29,6 +52,7 @@ a:hover {
 button {
   font-family: inherit;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 textarea, input {
@@ -45,6 +69,100 @@ input:focus-visible,
 
 #root {
   min-height: 100vh;
+}
+
+/* ---- Buttons ---- */
+
+.sm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 600;
+  transition-property: transform, background-color, border-color, box-shadow, color, opacity;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+}
+.sm-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+.sm-btn:disabled {
+  cursor: not-allowed;
+}
+
+.sm-btn-primary {
+  background: var(--sm-teal);
+  color: #fff;
+}
+.sm-btn-primary:hover:not(:disabled) {
+  background: var(--sm-teal-dark);
+}
+
+.sm-btn-danger {
+  background: var(--sm-danger);
+  color: #fff;
+}
+.sm-btn-danger:hover:not(:disabled) {
+  background: var(--sm-danger-dark);
+}
+
+.sm-btn-secondary {
+  background: var(--sm-surface);
+  border: 1px solid var(--sm-border);
+  color: #3F4956;
+}
+.sm-btn-secondary:hover:not(:disabled) {
+  background: var(--sm-surface-hover);
+  border-color: var(--sm-border-strong);
+}
+
+.sm-btn-ghost {
+  background: none;
+  padding: 6px 2px;
+  color: inherit;
+  font: inherit;
+  border-radius: 6px;
+}
+.sm-btn-ghost:hover {
+  color: var(--sm-teal);
+}
+
+.sm-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--sm-border);
+  background: var(--sm-surface);
+  transition: background-color 150ms ease-out, border-color 150ms ease-out, transform 150ms ease-out;
+}
+.sm-icon-btn:hover {
+  background: var(--sm-surface-hover);
+  border-color: var(--sm-border-strong);
+}
+.sm-icon-btn:active {
+  transform: scale(0.93);
+}
+
+.sm-hoverable {
+  transition: border-color 150ms ease-out, background-color 150ms ease-out;
+}
+.sm-hoverable:hover {
+  border-color: var(--sm-border-strong);
+}
+
+.sm-field {
+  transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+}
+.sm-field:hover {
+  border-color: var(--sm-border-strong);
+}
+.sm-field:focus-visible {
+  border-color: var(--sm-teal);
 }
 
 @keyframes sm-shimmer {
@@ -73,6 +191,15 @@ input:focus-visible,
   padding: 24px 20px 56px;
 }
 
+/* Wraps the single-column (mobile/tablet) layout. Edge-to-edge below 640px;
+   gains page gutters above that so the card isn't stranded in empty space
+   on tablet-width viewports. */
+.sm-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .sm-card {
   background: #F4F6F8;
   border: 1px solid #DDE3E9;
@@ -80,8 +207,10 @@ input:focus-visible,
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  width: 100%;
   max-width: 480px;
   margin: 0 auto;
+  flex: 1;
 }
 
 .sm-screen-body {
@@ -90,6 +219,26 @@ input:focus-visible,
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .sm-shell {
+    padding: 40px 24px;
+  }
+  .sm-card {
+    max-width: 600px;
+    flex: none;
+    box-shadow: 0 4px 24px rgba(11, 11, 14, 0.05);
+  }
+  .sm-screen-body {
+    padding: 4px 32px 32px;
+  }
+}
+
+@media (min-width: 860px) {
+  .sm-card {
+    max-width: 680px;
+  }
 }
 
 .visually-hidden {

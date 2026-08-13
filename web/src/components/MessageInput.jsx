@@ -60,15 +60,12 @@ export function MessageInput({ value, onChange, onSubmit, onClear, disabled, var
           type="button"
           onClick={onSubmit}
           disabled={disabled || value.trim().length === 0}
+          className="sm-btn sm-btn-primary"
           style={{
-            border: 0,
             flex: isDesktop ? 'none' : 1,
             width: isDesktop ? 'auto' : '100%',
             padding: isDesktop ? '16px 34px' : '19px',
-            borderRadius: 999,
             background: disabled || value.trim().length === 0 ? '#9BBFBB' : COLORS.teal,
-            color: '#fff',
-            fontWeight: 600,
             fontSize: isDesktop ? 16 : 17,
           }}
         >
@@ -78,15 +75,8 @@ export function MessageInput({ value, onChange, onSubmit, onClear, disabled, var
           <button
             type="button"
             onClick={onClear}
-            style={{
-              border: `1px solid ${COLORS.border}`,
-              background: '#FFFFFF',
-              padding: '16px 24px',
-              borderRadius: 999,
-              color: COLORS.text500,
-              fontWeight: 600,
-              fontSize: 16,
-            }}
+            className="sm-btn sm-btn-secondary"
+            style={{ padding: '16px 24px', fontSize: 16 }}
           >
             Clear
           </button>

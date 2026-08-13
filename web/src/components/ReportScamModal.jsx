@@ -61,16 +61,8 @@ export function ReportScamModal({ open, onClose, initialMessage = '', checkId })
         <button
           type="button"
           onClick={onClose}
-          style={{
-            alignSelf: 'flex-start',
-            border: 0,
-            borderRadius: 999,
-            padding: '12px 24px',
-            background: COLORS.teal,
-            color: '#fff',
-            fontWeight: 600,
-            fontSize: 15,
-          }}
+          className="sm-btn sm-btn-primary"
+          style={{ alignSelf: 'flex-start', padding: '12px 24px', fontSize: 15 }}
         >
           Close
         </button>
@@ -93,6 +85,7 @@ export function ReportScamModal({ open, onClose, initialMessage = '', checkId })
             required
             maxLength={1600}
             rows={5}
+            className="sm-field"
             style={{ ...fieldStyle, resize: 'vertical', lineHeight: 1.5 }}
           />
         </label>
@@ -103,6 +96,7 @@ export function ReportScamModal({ open, onClose, initialMessage = '', checkId })
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="e.g. 024 123 4567"
+            className="sm-field"
             style={fieldStyle}
           />
         </label>
@@ -113,6 +107,7 @@ export function ReportScamModal({ open, onClose, initialMessage = '', checkId })
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
+            className="sm-field"
             style={fieldStyle}
           />
         </label>
@@ -124,13 +119,10 @@ export function ReportScamModal({ open, onClose, initialMessage = '', checkId })
         <button
           type="submit"
           disabled={status === 'sending' || message.trim().length === 0}
+          className="sm-btn sm-btn-danger"
           style={{
-            border: 0,
-            borderRadius: 999,
             padding: 14,
             background: status === 'sending' || message.trim().length === 0 ? '#E9A6A6' : '#DC2626',
-            color: '#fff',
-            fontWeight: 600,
             fontSize: 16,
           }}
         >

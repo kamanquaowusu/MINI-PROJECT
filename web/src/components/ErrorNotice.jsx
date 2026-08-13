@@ -20,15 +20,8 @@ export function ErrorNotice({ message, onRetry }) {
         <button
           type="button"
           onClick={onRetry}
-          style={{
-            alignSelf: 'flex-start',
-            border: '1px solid #DDE3E9',
-            background: '#FFFFFF',
-            borderRadius: 999,
-            padding: '8px 16px',
-            fontWeight: 600,
-            fontSize: 13,
-          }}
+          className="sm-btn sm-btn-secondary"
+          style={{ alignSelf: 'flex-start', padding: '8px 16px', fontSize: 13 }}
         >
           Try again
         </button>

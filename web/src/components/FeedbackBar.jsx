@@ -19,15 +19,8 @@ export function FeedbackBar({ status, onHelpful, onNotHelpful }) {
           type="button"
           onClick={onHelpful}
           disabled={disabled}
-          style={{
-            border: `1px solid ${COLORS.border}`,
-            background: '#FFFFFF',
-            color: COLORS.text900,
-            padding: '10px 18px',
-            borderRadius: 999,
-            fontWeight: 600,
-            fontSize: 14,
-          }}
+          className="sm-btn sm-btn-secondary"
+          style={{ color: COLORS.text900, padding: '10px 18px', fontSize: 14 }}
         >
           Yes
         </button>
@@ -35,15 +28,8 @@ export function FeedbackBar({ status, onHelpful, onNotHelpful }) {
           type="button"
           onClick={onNotHelpful}
           disabled={disabled}
-          style={{
-            border: `1px solid ${COLORS.border}`,
-            background: '#FFFFFF',
-            color: COLORS.text500,
-            padding: '10px 18px',
-            borderRadius: 999,
-            fontWeight: 600,
-            fontSize: 14,
-          }}
+          className="sm-btn sm-btn-secondary"
+          style={{ padding: '10px 18px', fontSize: 14 }}
         >
           No, report
         </button>

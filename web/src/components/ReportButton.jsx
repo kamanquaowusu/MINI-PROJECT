@@ -4,15 +4,12 @@ export function ReportButton({ onClick, disabled }) {
       type="button"
       onClick={onClick}
       disabled={disabled}
+      className="sm-btn sm-btn-danger"
       style={{
         marginTop: 2,
-        border: 0,
         width: '100%',
         padding: 14,
-        borderRadius: 999,
         background: disabled ? '#E9A6A6' : '#DC2626',
-        color: '#fff',
-        fontWeight: 600,
         fontSize: 16,
       }}
     >

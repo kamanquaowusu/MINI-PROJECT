@@ -13,6 +13,7 @@ export function RedactedPreview({ text }) {
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
+        className="sm-hoverable"
         style={{
           width: '100%',
           border: 0,

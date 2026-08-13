@@ -6,6 +6,7 @@ import { COLORS } from '../theme';
 export function ConsentToggle({ checked, onChange }) {
   return (
     <label
+      className="sm-hoverable"
       style={{
         display: 'flex',
         gap: 12,

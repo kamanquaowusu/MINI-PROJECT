@@ -67,22 +67,7 @@ export function Modal({ open, onClose, title, children }) {
           >
             {title}
           </h3>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close"
-            style={{
-              border: `1px solid ${COLORS.border}`,
-              background: '#FFFFFF',
-              width: 32,
-              height: 32,
-              borderRadius: 999,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flex: 'none',
-            }}
-          >
+          <button type="button" onClick={onClose} aria-label="Close" className="sm-icon-btn" style={{ flex: 'none' }}>
             <XMarkIcon size={14} stroke={COLORS.text500} />
           </button>
         </div>

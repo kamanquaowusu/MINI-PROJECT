@@ -35,18 +35,10 @@ export function TopNav({ onHowItWorks, onReportScam }) {
         </span>
       </div>
       <nav style={{ display: 'flex', gap: 24, fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 15, color: COLORS.text500 }}>
-        <button
-          type="button"
-          onClick={onHowItWorks}
-          style={{ border: 0, background: 'none', padding: 0, font: 'inherit', color: 'inherit', cursor: 'pointer' }}
-        >
+        <button type="button" onClick={onHowItWorks} className="sm-btn sm-btn-ghost" style={{ font: 'inherit', color: 'inherit' }}>
           How it works
         </button>
-        <button
-          type="button"
-          onClick={onReportScam}
-          style={{ border: 0, background: 'none', padding: 0, font: 'inherit', color: 'inherit', cursor: 'pointer' }}
-        >
+        <button type="button" onClick={onReportScam} className="sm-btn sm-btn-ghost" style={{ font: 'inherit', color: 'inherit' }}>
           Report a scam
         </button>
       </nav>

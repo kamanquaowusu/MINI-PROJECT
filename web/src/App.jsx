@@ -171,40 +171,50 @@ export default function App() {
 
   return (
     <>
-      <div className="sm-card" style={{ minHeight: '100vh', maxWidth: 480 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 24px 6px', fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: COLORS.text900 }}>
-          <span>SafeMoMo</span>
-          <span style={{ color: COLORS.text400, fontSize: 11 }}>Pilot</span>
-        </div>
-        <BrandHeader />
-        <div className="sm-screen-body">
-          {screen === 'home' && (
-            <>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                <h2 style={{ margin: 0, fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 700, fontSize: 30, lineHeight: 1.12, letterSpacing: '-0.015em', color: COLORS.text900 }}>
-                  Check a MoMo message
-                </h2>
-                <p style={{ margin: 0, fontFamily: "'DM Sans', sans-serif", fontSize: 15, lineHeight: 1.5, color: COLORS.text500 }}>
-                  Paste a text you're unsure about and we'll tell you how risky it looks — in plain words.
-                </p>
-              </div>
-              <ProgressDots activeIndex={null} />
-              {inputBlock}
-            </>
-          )}
+      <div className="sm-shell">
+        <div className="sm-card">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 24px 6px', fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: COLORS.text900 }}>
+            <span>SafeMoMo</span>
+            <span style={{ color: COLORS.text400, fontSize: 11 }}>Pilot</span>
+          </div>
+          <BrandHeader />
+          <div style={{ display: 'flex', gap: 20, padding: '0 24px 12px', borderBottom: `1px solid ${COLORS.border}` }}>
+            <button type="button" className="sm-btn sm-btn-ghost" style={{ fontSize: 13, fontWeight: 600, color: COLORS.text500 }} onClick={() => setHowItWorksOpen(true)}>
+              How it works
+            </button>
+            <button type="button" className="sm-btn sm-btn-ghost" style={{ fontSize: 13, fontWeight: 600, color: COLORS.text500 }} onClick={() => setReportOpen(true)}>
+              Report a scam
+            </button>
+          </div>
+          <div className="sm-screen-body">
+            {screen === 'home' && (
+              <>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  <h2 style={{ margin: 0, fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 700, fontSize: 30, lineHeight: 1.12, letterSpacing: '-0.015em', color: COLORS.text900 }}>
+                    Check a MoMo message
+                  </h2>
+                  <p style={{ margin: 0, fontFamily: "'DM Sans', sans-serif", fontSize: 15, lineHeight: 1.5, color: COLORS.text500 }}>
+                    Paste a text you're unsure about and we'll tell you how risky it looks — in plain words.
+                  </p>
+                </div>
+                <ProgressDots activeIndex={null} />
+                {inputBlock}
+              </>
+            )}
 
-          {screen === 'checking' && (
-            <>
-              <ProgressDots activeIndex={null} shimmer />
-              <CheckingScreen />
-            </>
-          )}
+            {screen === 'checking' && (
+              <>
+                <ProgressDots activeIndex={null} shimmer />
+                <CheckingScreen />
+              </>
+            )}
 
-          {screen === 'error' && <ErrorNotice message={error} onRetry={handleCheck} />}
+            {screen === 'error' && <ErrorNotice message={error} onRetry={handleCheck} />}
 
-          {screen === 'result' && resultBlock}
+            {screen === 'result' && resultBlock}
 
-          <AdvisoryFooter />
+            <AdvisoryFooter />
+          </div>
         </div>
       </div>
       {modals}
