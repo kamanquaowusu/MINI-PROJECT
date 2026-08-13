@@ -16,6 +16,7 @@ Every kept row ends up with these columns, no matter which file it came from:
 """
 
 import json
+import re
 import pandas as pd
 
 UPLOAD_DIR = "data/raw"
@@ -132,7 +133,58 @@ print(f"  added {count_gen_added} new rows, skipped {count_gen_skipped} duplicat
 
 
 # ---------------------------------------------------------------------------
-# STEP 4: obfuscation_validation_set.jsonl -- deliberately NOT loaded here.
+# STEP 4: safe_dataset_redacted.csv -- genuine bank/telco service
+# notifications (CBG, MTN, T-Cash, Stanbic, etc.), all legitimate.
+# Hard negatives: teaches the model that "banking"/"ATM"/"security"
+# language isn't itself a scam signal, to cut false positives.
+# Dedup by raw text (no normalized_text column, and the file itself has
+# internal exact repeats).
+# ---------------------------------------------------------------------------
+print("Loading safe_dataset_redacted.csv ...")
+df_safe = pd.read_csv(f"{UPLOAD_DIR}/safe_dataset_redacted.csv")
+
+# This export splits some real SMS into two rows: a bare salutation
+# ("Dear Customer," / "Dear [REDACTED],") followed by the message body as
+# the next row from the same sender. Trained separately, the salutation
+# row is a near-content-free fragment and the body row is missing its
+# opening -- neither looks like a real SMS. Recombine them first.
+SALUTATION_RE = re.compile(r"^Dear (Customer|\[REDACTED\]),?$")
+safe_texts = []
+i = 0
+rows_safe = df_safe.to_dict("records")
+while i < len(rows_safe):
+    msg = str(rows_safe[i]["message"])
+    if (SALUTATION_RE.match(msg.strip())
+            and i + 1 < len(rows_safe)
+            and rows_safe[i + 1]["sender"] == rows_safe[i]["sender"]):
+        safe_texts.append(f"{msg} {rows_safe[i + 1]['message']}")
+        i += 2
+    else:
+        safe_texts.append(msg)
+        i += 1
+
+count_safe_added = 0
+count_safe_skipped = 0
+for text in safe_texts:
+    if text in seen_normalized_texts:
+        count_safe_skipped += 1
+        continue
+
+    add_row(
+        text=text,
+        normalized_text=None,
+        label=0,                    # confirmed: every row is a legitimate notice
+        category="legitimate",
+        mechanism="unknown",
+        source_file="safe_dataset_redacted",
+    )
+    count_safe_added += 1
+print(f"  merged {len(df_safe) - len(safe_texts)} salutation fragments into their message body")
+print(f"  added {count_safe_added} new rows, skipped {count_safe_skipped} duplicates")
+
+
+# ---------------------------------------------------------------------------
+# STEP 5: obfuscation_validation_set.jsonl -- deliberately NOT loaded here.
 # It stays untouched in data/raw for a separate evaluation script.
 # ---------------------------------------------------------------------------
 print("Skipping obfuscation_validation_set.jsonl on purpose (held-out test set)")
