@@ -1,7 +1,11 @@
 # Render Blueprint: deploys the whole app (API + frontend) as one free-tier
 # Docker web service. In Render: New + -> Blueprint -> connect this repo.
-# The two SMTP secrets must be set in the Render dashboard (sync: false
-# means Render prompts for them instead of reading values from this file).
+#
+# NOTE on envVars: `value:` and `sync: false` are mutually exclusive --
+# `sync: false` means "Render manages this in the dashboard, ignore the
+# blueprint", so pairing it with a value is invalid and fails the whole
+# blueprint sync. The sending address is not a credential, so it syncs
+# normally; only the Gmail App Password is dashboard-managed.
 services:
   - type: web
     name: safemomo
@@ -11,6 +15,5 @@ services:
     envVars:
       - key: SAFEMOMO_SMTP_USER
         value: safemomoapi@gmail.com
-        sync: false
       - key: SAFEMOMO_SMTP_PASSWORD
         sync: false
