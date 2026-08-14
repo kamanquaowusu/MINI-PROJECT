@@ -83,6 +83,47 @@ def test_escalation_never_touches_already_suspicious():
     assert result["band_source"] == "model"
 
 
+def test_allowlisted_telco_links_do_not_escalate():
+    # Real MTN / Telecel broadcast links must not push a model-safe message
+    # to suspicious: these exact domains/paths are telco-controlled.
+    cases = [
+        "Special Deal! Enjoy 1.5GB for 7 days at GHc4. Dial *141# or visit myMTN App via https://mymtn.onelink.me/cB5t/MTN4G6",
+        "Out of credit? Simply dial *505# or visit https://bit.ly/TelecelPlayGhana to get an airtime loan whenever you need it!",
+        "Access Telecel data via *200# or the Telecel Play App - https://telecel.me/TelecelPlayApp",
+    ]
+    for text in cases:
+        result = enrich(text, safe_result(), enable_escalation=True)
+        assert result["band"] == "safe", text
+        assert result["band_source"] == "model"
+
+
+def test_reward_marketing_without_payment_demand_does_not_escalate():
+    text = "Get rewarded for staying connected! Install the MyMTN App for exclusive data deals and special Just4U offers."
+    result = enrich(text, safe_result(), enable_escalation=True)
+    assert result["band"] == "safe"
+
+
+def test_refund_education_without_corroboration_does_not_escalate():
+    # Telcos legitimately explain HOW to reverse wrong transactions.
+    text = "Dear Customer, do you know you can reverse a wrong Telecel Cash transaction on TERi? Chat via https://telecel.me/TERiWhatsApp"
+    result = enrich(text, safe_result(), enable_escalation=True)
+    assert result["band"] == "safe"
+
+
+def test_refund_with_amount_and_phone_still_escalates():
+    text = "I sent GHS 400.00 to you by mistake, kindly refund to 0244123456"
+    result = enrich(text, safe_result(), enable_escalation=True)
+    assert result["band"] == "suspicious"
+    assert result["band_source"] == "heuristic_escalation"
+
+
+def test_brand_lookalike_link_still_escalates():
+    text = "check your bonus at mtn-rewards-claim.com today"
+    result = enrich(text, safe_result(), enable_escalation=True)
+    assert result["band"] == "suspicious"
+    assert result["band_source"] == "heuristic_escalation"
+
+
 def test_negated_pin_safety_footer_does_not_trigger_pin_request():
     # Real MTN/Telecel confirmations append this exact safety footer -- it
     # must NOT be treated as a scam asking for your PIN.

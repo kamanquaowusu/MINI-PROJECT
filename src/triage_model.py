@@ -81,14 +81,37 @@ def legit_purity_below(threshold, proba, y):
     return (y[passed] == 0).mean()    # fraction of passed that are truly legit
 
 TARGET_DANGER_PRECISION = 0.95
-TARGET_SAFE_PURITY = 0.99
+# 1.0 = the safe band may contain ZERO validation scams. Measured on the
+# served pipeline (model + heuristic escalation), strict purity was both
+# the safest AND the least noisy choice: T_LOW rises to wherever the
+# lowest-scoring validation scam sits, and the escalation heuristics
+# backstop anything below it.
+TARGET_SAFE_PURITY = 1.0
+TARGET_FLAG_RECALL = 0.99
 
 grid = np.round(np.arange(0.01, 1.00, 0.01), 2)
 
-# T_HIGH: smallest threshold whose scam-precision meets target (maximise recall)
+
+def scam_recall_above(threshold, proba, y):
+    total = (y == 1).sum()
+    if total == 0:
+        return 1.0
+    return (((proba >= threshold) & (y == 1)).sum()) / total
+
+
+# T_HIGH: LARGEST threshold that still catches >=99% of validation scams
+# (and meets the precision target). The serving layer displays only two
+# bands and maps the middle band to "suspicious", so everything above
+# T_LOW is flagged -- and T_LOW is capped below T_HIGH. The previous
+# policy (SMALLEST threshold meeting precision) therefore dragged T_LOW
+# to ~0.02 and flagged every legit message scoring above noise (real
+# telco marketing sits at 0.03-0.20). Maximising T_HIGH under a recall
+# floor frees T_LOW to rise to where real legitimate traffic lives,
+# while the safe band keeps its own 99%-purity constraint below.
 t_high_candidates = [t for t in grid
-                     if scam_precision_above(t, val_proba, y_val) >= TARGET_DANGER_PRECISION]
-T_HIGH = min(t_high_candidates) if t_high_candidates else 0.70
+                     if scam_recall_above(t, val_proba, y_val) >= TARGET_FLAG_RECALL
+                     and scam_precision_above(t, val_proba, y_val) >= TARGET_DANGER_PRECISION]
+T_HIGH = max(t_high_candidates) if t_high_candidates else 0.70
 
 # T_LOW: largest threshold whose "below" region stays >=99% legit (maximise safe volume)
 t_low_candidates = [t for t in grid

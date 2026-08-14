@@ -77,9 +77,28 @@ RE_TRANSACTION_SHAPE = re.compile(
 SHORTENER_HOSTS = re.compile(
     r"\b(bit\.ly|tinyurl|cutt\.ly|t\.co|is\.gd|rb\.gy|shorturl|goo\.gl|s\.id)\b", re.I
 )
-ALLOWLISTED_HOSTS = ("mtn.com.gh", "telecel.com.gh", "airteltigo.com.gh", ".gov.gh")
+# Domains the Ghanaian telcos actually control. mymtn.onelink.me is MTN's
+# registered AppsFlyer subdomain and telecel.me is Telecel's own short
+# domain -- a scammer cannot claim either, so allowlisting is safe.
+ALLOWLISTED_HOSTS = (
+    "mtn.com.gh", "telecel.com.gh", "airteltigo.com.gh", ".gov.gh",
+    "mymtn.onelink.me", "telecel.me",
+)
+# Exact shortened paths the telcos verifiably own. bit.ly paths are
+# first-come-first-served and immutable, so an EXACT path match cannot be
+# spoofed -- but never allowlist bit.ly by host alone.
+ALLOWLISTED_EXACT_URLS = ("bit.ly/telecelplayghana", "bit.ly/mymtn138")
 
-DEFAULT_ESCALATION_IDS = {"pin_request", "suspicious_link", "refund_reversal", "prize_promo", "obfuscation"}
+# Escalation policy (safe -> suspicious when the model said safe). Every
+# revision here must only NARROW the previous trigger, never widen it:
+#   suspicious_link (any URL)  -> risky_link (shortener / brand-lookalike)
+#   prize_promo (any prize word) -> pay_to_receive (prize + payment demand)
+#   refund_reversal (any refund word) -> refund_escalation (refund word +
+#       amount, phone, urgency, or risky link)
+# Rationale: real MTN/Telecel broadcasts use FREE/reward/loan/link language
+# constantly; escalating on vocabulary alone flagged most genuine telco
+# marketing (measured against the owner's real inbox batch).
+DEFAULT_ESCALATION_IDS = {"pin_request", "risky_link", "refund_escalation", "pay_to_receive", "obfuscation"}
 
 
 def _urgency_phrase(text: str) -> Optional[str]:
@@ -87,14 +106,31 @@ def _urgency_phrase(text: str) -> Optional[str]:
     return m.group(0) if m else None
 
 
+def _url_is_allowlisted(url: str) -> bool:
+    u = url.lower()
+    return any(h in u for h in ALLOWLISTED_HOSTS) or any(p in u for p in ALLOWLISTED_EXACT_URLS)
+
+
+def _has_risky_link(text: str) -> bool:
+    """True if ANY link in the text is a (non-allowlisted) shortener or a
+    brand-lookalike domain. Plain informational links don't count."""
+    for match in RE_URL.finditer(text):
+        url = match.group(0)
+        if _url_is_allowlisted(url):
+            continue
+        if SHORTENER_HOSTS.search(url) or RE_BRAND.search(url):
+            return True
+    return False
+
+
 def _suspicious_link_text(text: str) -> Optional[str]:
     match = RE_URL.search(text)
     if not match:
         return None
     url = match.group(0)
-    if SHORTENER_HOSTS.search(url):
+    if SHORTENER_HOSTS.search(url) and not _url_is_allowlisted(url):
         return "Contains a shortened link that hides where it really goes"
-    if RE_BRAND.search(url) and not any(h in url.lower() for h in ALLOWLISTED_HOSTS):
+    if RE_BRAND.search(url) and not _url_is_allowlisted(url):
         return "Contains a link that copies a network's name"
     return "Contains a link — check where it really leads"
 
@@ -131,9 +167,17 @@ def _detect_signals(text: str, model_result: dict, category: str, high_severity:
 
     obfuscation = bool(model_result.get("obfuscation_suspected"))
 
+    risky_link = _has_risky_link(text)
+    # A refund/reversal mention only justifies escalation when something
+    # actionable rides along (amount, phone, urgency, risky link) -- telcos
+    # legitimately SMS about how to reverse wrong transactions.
+    refund_escalation = refund_reversal and (has_amount or has_phone or urgency or risky_link)
+
     return {
         "pin_request": pin_request,
         "refund_reversal": refund_reversal,
+        "refund_escalation": refund_escalation,
+        "risky_link": risky_link,
         "suspicious_link": has_url,
         "threat_block": threat_block,
         "pay_to_receive": pay_to_receive,

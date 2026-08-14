@@ -10,6 +10,7 @@ services:
     healthCheckPath: /api/health
     envVars:
       - key: SAFEMOMO_SMTP_USER
+        value: safemomoapi@gmail.com
         sync: false
       - key: SAFEMOMO_SMTP_PASSWORD
         sync: false

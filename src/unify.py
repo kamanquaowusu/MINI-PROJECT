@@ -225,7 +225,46 @@ else:
 
 
 # ---------------------------------------------------------------------------
-# STEP 6: obfuscation_validation_set.jsonl -- deliberately NOT loaded here.
+# STEP 6: telco_inbox_safe.jsonl -- real MTN / Telecel / T-Cash broadcast
+# messages from the project owner's own inbox, curated and confirmed
+# legitimate. High-value hard negatives: real telco marketing uses FREE /
+# reward / loan / shortened-link language that heavily overlaps scam
+# vocabulary, which synthetic data underrepresents.
+# ---------------------------------------------------------------------------
+count_inbox_added = 0
+count_inbox_skipped = 0
+try:
+    inbox_file = open(f"{UPLOAD_DIR}/telco_inbox_safe.jsonl", encoding="utf-8")
+except FileNotFoundError:
+    print("No telco_inbox_safe.jsonl -- skipping")
+else:
+    print("Loading telco_inbox_safe.jsonl ...")
+    with inbox_file:
+        for line in inbox_file:
+            line = line.strip()
+            if not line:
+                continue
+            row = json.loads(line)
+
+            text = row["text"]
+            if text in seen_normalized_texts:
+                count_inbox_skipped += 1
+                continue
+
+            add_row(
+                text=text,
+                normalized_text=None,
+                label=0,               # curated: every row confirmed legitimate
+                category=row.get("category", "legitimate"),
+                mechanism="unknown",
+                source_file="telco_inbox",
+            )
+            count_inbox_added += 1
+    print(f"  added {count_inbox_added} new rows, skipped {count_inbox_skipped} duplicates")
+
+
+# ---------------------------------------------------------------------------
+# STEP 7: obfuscation_validation_set.jsonl -- deliberately NOT loaded here.
 # It stays untouched in data/raw for a separate evaluation script.
 # ---------------------------------------------------------------------------
 print("Skipping obfuscation_validation_set.jsonl on purpose (held-out test set)")
