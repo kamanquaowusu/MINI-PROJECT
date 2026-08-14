@@ -1,0 +1,4 @@
+{"id": "shadow_rpt_4f5d6dc06dc8448e", "text": "Dear customer send your PIN to claim prize", "label": "illegitimate", "category": "unknown", "source": "report", "ts": "2026-08-13T14:54:16.514187+00:00"}
+{"id": "shadow_rpt_fa2e9befaaaa4bec", "text": "Dear customer your MoMo account will be blocked send your PIN now to reverse", "label": "illegitimate", "category": "unknown", "source": "report", "ts": "2026-08-13T14:55:38.609244+00:00"}
+{"id": "shadow_rpt_cfa400ebd07945cb", "text": "URGENT: Your MoMo wallet will be suspended today. Verify your PIN now at <URL> to keep your account active.", "label": "illegitimate", "category": "unknown", "source": "report", "ts": "2026-08-13T23:58:10.384178+00:00"}
+{"id": "shadow_fb_4bad4d60f183419a", "text": "We've got varieties of offers specially made for you to choose from! Dial *530# now to enjoy your Made4Me offers!", "label": "legitimate", "category": "unknown", "source": "feedback", "ts": "2026-08-14T00:14:57.653675+00:00"}

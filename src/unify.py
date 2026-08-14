@@ -184,7 +184,48 @@ print(f"  added {count_safe_added} new rows, skipped {count_safe_skipped} duplic
 
 
 # ---------------------------------------------------------------------------
-# STEP 5: obfuscation_validation_set.jsonl -- deliberately NOT loaded here.
+# STEP 5: shadow_labeled.jsonl -- real, consented, user-labeled messages
+# exported from the app's shadow logs by src/shadow_to_training.py
+# (scam reports + labeled feedback, text already redacted). This is the
+# collect -> label -> retrain loop; the file may not exist yet on a fresh
+# pilot, which is fine.
+# ---------------------------------------------------------------------------
+count_shadow_added = 0
+count_shadow_skipped = 0
+try:
+    shadow_file = open(f"{UPLOAD_DIR}/shadow_labeled.jsonl", encoding="utf-8")
+except FileNotFoundError:
+    print("No shadow_labeled.jsonl yet (run src/shadow_to_training.py to export) -- skipping")
+else:
+    print("Loading shadow_labeled.jsonl ...")
+    with shadow_file:
+        for line in shadow_file:
+            line = line.strip()
+            if not line:
+                continue
+            row = json.loads(line)
+
+            text = row["text"]
+            if text in seen_normalized_texts:
+                count_shadow_skipped += 1
+                continue
+
+            label = 0 if row["label"] == "legitimate" else 1
+
+            add_row(
+                text=text,
+                normalized_text=None,
+                label=label,
+                category=row.get("category", "unknown"),
+                mechanism="unknown",
+                source_file="shadow_labeled",
+            )
+            count_shadow_added += 1
+    print(f"  added {count_shadow_added} new rows, skipped {count_shadow_skipped} duplicates")
+
+
+# ---------------------------------------------------------------------------
+# STEP 6: obfuscation_validation_set.jsonl -- deliberately NOT loaded here.
 # It stays untouched in data/raw for a separate evaluation script.
 # ---------------------------------------------------------------------------
 print("Skipping obfuscation_validation_set.jsonl on purpose (held-out test set)")
