@@ -76,6 +76,7 @@ class ReportResponse(BaseModel):
     recorded: bool
     report_id: str
     message: str
+    ack_email_queued: bool = False
 
 
 class HealthResponse(BaseModel):

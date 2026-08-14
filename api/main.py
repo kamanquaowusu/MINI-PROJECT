@@ -12,11 +12,13 @@ import hashlib
 import uuid
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
+from pathlib import Path
 
-from fastapi import FastAPI, HTTPException
+from fastapi import BackgroundTasks, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
-from api import config, deps, store
+from api import config, deps, emailer, store
 from api.reasons import enrich
 from api.redact import redact
 from api.schemas import (
@@ -186,7 +188,7 @@ def submit_feedback(req: FeedbackRequest):
 
 
 @app.post("/api/report", response_model=ReportResponse)
-def submit_report(req: ReportRequest):
+def submit_report(req: ReportRequest, background: BackgroundTasks):
     message_redacted, _ = redact(req.message)
 
     report_id = _new_id("rpt")
@@ -201,10 +203,18 @@ def submit_report(req: ReportRequest):
     }
     store.append_report(record)
 
+    # Queue the acknowledgment email AFTER the report is safely persisted;
+    # a failed email never fails (or slows) the report itself.
+    ack_email_queued = False
+    if req.email and emailer.smtp_configured():
+        background.add_task(emailer.send_report_ack, req.email, report_id)
+        ack_email_queued = True
+
     return ReportResponse(
         recorded=True,
         report_id=report_id,
-        message="Thanks — your report has been received. Our team will review it.",
+        message="Thanks — your report has been received. It has been seen and will be considered by the team.",
+        ack_email_queued=ack_email_queued,
     )
 
 
@@ -222,3 +232,12 @@ def shadow_summary():
         recall=s["recall"],
         note=s["note"],
     )
+
+
+# Production: serve the built frontend from the same service (single origin,
+# no CORS needed). Mounted last so every /api route above wins; html=True
+# makes / serve index.html. In dev the Vite server runs instead and this
+# mount simply doesn't happen (web/dist absent unless built).
+_dist = Path(config.WEB_DIST)
+if _dist.is_dir():
+    app.mount("/", StaticFiles(directory=str(_dist), html=True), name="frontend")

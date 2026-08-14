@@ -1,0 +1,15 @@
+# Render Blueprint: deploys the whole app (API + frontend) as one free-tier
+# Docker web service. In Render: New + -> Blueprint -> connect this repo.
+# The two SMTP secrets must be set in the Render dashboard (sync: false
+# means Render prompts for them instead of reading values from this file).
+services:
+  - type: web
+    name: safemomo
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: SAFEMOMO_SMTP_USER
+        sync: false
+      - key: SAFEMOMO_SMTP_PASSWORD
+        sync: false

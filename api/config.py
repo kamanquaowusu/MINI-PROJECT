@@ -35,4 +35,15 @@ ALLOWED_ORIGINS = [
     if origin.strip()
 ]
 
+# Built frontend, served by FastAPI in production (single-service deploy).
+WEB_DIST = os.environ.get("SAFEMOMO_WEB_DIST", str(PROJECT_ROOT / "web" / "dist"))
+
+# Acknowledgment email for scam reports. Dormant until both SMTP_USER and
+# SMTP_PASSWORD are set (Gmail: an App Password, not the account password).
+SMTP_HOST = os.environ.get("SAFEMOMO_SMTP_HOST", "smtp.gmail.com")
+SMTP_PORT = int(os.environ.get("SAFEMOMO_SMTP_PORT", "587"))
+SMTP_USER = os.environ.get("SAFEMOMO_SMTP_USER", "")
+SMTP_PASSWORD = os.environ.get("SAFEMOMO_SMTP_PASSWORD", "")
+FROM_NAME = os.environ.get("SAFEMOMO_FROM_NAME", "SafeMoMo")
+
 SCHEMA_VERSION = 1

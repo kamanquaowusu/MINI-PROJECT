@@ -1,0 +1,12 @@
+venv/
+web/node_modules/
+web/dist/
+data/shadow/
+data/processed/
+data/raw/
+data/shadow_test/
+.git/
+.pytest_cache/
+__pycache__/
+*.pyc
+.playwright-mcp/

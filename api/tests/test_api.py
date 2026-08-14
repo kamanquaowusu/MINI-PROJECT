@@ -135,3 +135,36 @@ def test_report_optional_fields_default_null(client, tmp_path):
 def test_report_message_validation(client):
     assert client.post("/api/report", json={"message": ""}).status_code == 422
     assert client.post("/api/report", json={"message": "x" * 2000}).status_code == 422
+
+
+def test_report_ack_email_not_queued_without_smtp_config(client):
+    # No SMTP credentials in the test environment -> dormant, never queued.
+    r = client.post("/api/report", json={
+        "message": "scam text needing ack",
+        "email": "victim@example.com",
+    })
+    assert r.status_code == 200
+    assert r.json()["ack_email_queued"] is False
+
+
+def test_report_ack_email_queued_when_smtp_configured(client, monkeypatch):
+    import api.emailer as emailer_mod
+
+    sent = []
+    monkeypatch.setattr(emailer_mod, "smtp_configured", lambda: True)
+    monkeypatch.setattr(emailer_mod, "send_report_ack", lambda to, rid: sent.append((to, rid)))
+
+    r = client.post("/api/report", json={
+        "message": "scam text needing ack",
+        "email": "victim@example.com",
+    })
+    assert r.status_code == 200
+    body = r.json()
+    assert body["ack_email_queued"] is True
+    # TestClient executes background tasks before returning the response.
+    assert sent == [("victim@example.com", body["report_id"])]
+
+    # No email supplied -> nothing queued even with SMTP configured.
+    r2 = client.post("/api/report", json={"message": "another scam text"})
+    assert r2.json()["ack_email_queued"] is False
+    assert len(sent) == 1
