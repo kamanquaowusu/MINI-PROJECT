@@ -2664,7 +2664,7 @@ MTN MoMo: Payment of <AMOUNT> to ExpressPay was successful. Balance <AMOUNT>. Y�
 "Medaase. AirtelTigo Money agent: For your protection, kindly send your MoMo PIN so we can reverse the wrong transaction.",reversal,1,0.9378317562837415,dangerous
 "Ei! AirtelTigo Money: A genuine AirtelTigo Money representative will NEVER ask for your PIN. If asked, do not comply and report it.",security_advisory,0,0.030490450511137725,safe
 "Charley, MTN MoMo: For your security, confirm your PIN at <URL> to prevent your account from being locked.",account_verification,1,1.0,dangerous
-Chale! MTN MoMo: Fraud alert - scammers may pose as MTN MoMo agents asking for your PIN to 'reverse' or 'refund' a payment. Do not share it.,security_advisory,0,0.183919608492021,safe
+Chale! MTN MoMo: Fraud alert - scammers may pose as MTN MoMo agents asking for your PIN to 'reverse' or 'refund' a payment. Do not share it.,security_advisory,0,0.183919608492021,suspicious
 "Ei! Prudential Bank agent: For your protection, kindly send your MoMo PIN so we can reverse the wrong transaction.",reversal,1,0.9138742805067581,dangerous
 Medaase. Ecobank Ghana fraud department: Please provide your OTP so we can protect your account from the suspicious login we detected.,impersonation,1,0.9231204710860524,dangerous
 Chale! AirtelTigo Money: A refund is pending on your account. Share your PIN to authorize the release of funds.,reversal,1,0.9661835017093866,dangerous
@@ -2672,7 +2672,7 @@ Chale! AirtelTigo Money: A refund is pending on your account. Share your PIN to 
 AirtelTigo Money: We will NEVER call or SMS you to ask for your PIN or OTP. Do not share it with anyone.,security_advisory,0,0.0,safe
 MTN Mobile Money support: Your card was used fraudulently. Share your PIN with us now so we can block it for you.,impersonation,1,0.8198115312300063,dangerous
 Chale! T-Cash: Your PIN is private. T-Cash staff will never ask you to reveal it over the phone or by SMS.,security_advisory,0,0.0913794184798581,safe
-"Medaase. CBG: Report any call or SMS asking for your PIN, OTP or password to <PHONE> immediately.",security_advisory,0,0.16033088361021092,safe
+"Medaase. CBG: Report any call or SMS asking for your PIN, OTP or password to <PHONE> immediately.",security_advisory,0,0.16033088361021092,suspicious
 "Charley, AirtelTigo Money fraud department: Please provide your OTP so we can protect your account from the suspicious login we detected.",impersonation,1,0.9344143998696879,dangerous
 "Medaase. Ecobank Ghana: If someone asks you to share your PIN or OTP to 'verify' or 'reverse' a transaction, hang up. That is fraud.",security_advisory,0,0.03928708672496264,safe
 "Dear Customer, Absa Bank Ghana: Your PIN is private. Absa Bank Ghana staff will never ask you to reveal it over the phone or by SMS.",security_advisory,0,0.0950261837897447,safe
@@ -2691,10 +2691,10 @@ Ecobank Ghana: A refund is pending on your account. Share your PIN to authorize 
 "Charley, MTN Mobile Money: Protect yourself from fraud - your PIN should never be shared, not even with someone claiming to work here.",security_advisory,0,0.02124068468134146,safe
 "Dear Customer, MTN Mobile Money: To stay safe, never reveal your PIN or password to anyone over a phone call or text message.",security_advisory,0,0.07636314097884206,safe
 "Charley, MTN Mobile Money: We take your security seriously. Remember: MTN Mobile Money will never request your PIN via SMS or phone call.",security_advisory,0,0.0781511680415523,safe
-Medaase. MTN MoMo: Your PIN is private. MTN MoMo staff will never ask you to reveal it over the phone or by SMS.,security_advisory,0,0.1602020561969743,safe
+Medaase. MTN MoMo: Your PIN is private. MTN MoMo staff will never ask you to reveal it over the phone or by SMS.,security_advisory,0,0.1602020561969743,suspicious
 "Charley, AirtelTigo Money: To stay safe, never reveal your PIN or password to anyone over a phone call or text message.",security_advisory,0,0.03176455216271019,safe
 Ei! T-Cash: We are verifying accounts due to a security breach. Send your PIN to avoid suspension.,account_verification,1,0.9993448799475688,dangerous
-"Dear Customer, MTN MoMo: Report any call or SMS asking for your PIN, OTP or password to <PHONE> immediately.",security_advisory,0,0.21563360271538334,safe
+"Dear Customer, MTN MoMo: Report any call or SMS asking for your PIN, OTP or password to <PHONE> immediately.",security_advisory,0,0.21563360271538334,suspicious
 Ei! Telecel Cash fraud department: Please provide your OTP so we can protect your account from the suspicious login we detected.,impersonation,1,0.8843932395340947,dangerous
 Chale! GCB Bank: We are verifying accounts due to a security breach. Send your PIN to avoid suspension.,account_verification,1,1.0,dangerous
 "Ɛyɛ, Fidelity Bank: To stay safe, never reveal your PIN or password to anyone over a phone call or text message.",security_advisory,0,0.03128095106236347,safe
@@ -2721,7 +2721,7 @@ Medaase. MTN MoMo: A refund is pending on your account. Share your PIN to author
 "Ei! Prudential Bank: For your security, confirm your PIN at <URL> to prevent your account from being locked.",account_verification,1,0.994613519553643,dangerous
 "Ɛyɛ, AirtelTigo Money: To verify your account, please reply with the PIN sent to your phone.",account_verification,1,0.9353417862506138,dangerous
 "Ɛyɛ, AirtelTigo Money: We take your security seriously. Remember: AirtelTigo Money will never request your PIN via SMS or phone call.",security_advisory,0,0.10733198895464327,safe
-"Charley, CBG: We take your security seriously. Remember: CBG will never request your PIN via SMS or phone call.",security_advisory,0,0.1676053213509544,safe
+"Charley, CBG: We take your security seriously. Remember: CBG will never request your PIN via SMS or phone call.",security_advisory,0,0.1676053213509544,suspicious
 "Telecel Cash: Report any call or SMS asking for your PIN, OTP or password to <PHONE> immediately.",security_advisory,0,0.08717051209163029,safe
 Zenith Bank Ghana fraud department: Please provide your OTP so we can protect your account from the suspicious login we detected.,impersonation,1,0.8847823949125309,dangerous
 "CBG: To stop the unauthorized transaction, reply immediately with your PIN.",account_verification,1,0.9248362790775252,dangerous
@@ -2741,12 +2741,12 @@ Fidelity Bank: Fraud alert - scammers may pose as Fidelity Bank agents asking fo
 "Medaase. Telecel Cash: Beware of fraudsters impersonating Telecel Cash staff. Never disclose your PIN, OTP or account details to anyone.",security_advisory,0,0.012820581268221309,safe
 "Dear Customer, Due to planned maintenance works, there will be disruptions on our ATMs, mobile App and online channels on Sunday, May 18, 2025, from 12:00am to 4:00am. We apologize for the inconvenience caused. CBG...We Stand With You.",legitimate,0,0.0120813140871917,safe
 "Dear Customer, Use your CBG MasterCard at Capitol Restaurant, Electroland & X-Men Ghana to enjoy discounts this Valentine. TnCs Apply. CBG...We Stand With You",legitimate,0,0.04821752269282162,safe
-"Dear Customer, Your phone is now your bank in your palm. When you lose it, or it is stolen, contact us immediately on [REDACTED]. CBG...We Stand with You",legitimate,0,0.3589721774844568,safe
+"Dear Customer, Your phone is now your bank in your palm. When you lose it, or it is stolen, contact us immediately on [REDACTED]. CBG...We Stand with You",legitimate,0,0.3589721774844568,suspicious
 Never miss out on good deals. Amazing Made4Me bundles await you!,legitimate,0,0.04590246563577591,safe
 Dial *530# now to subscribe and enjoy the best value ever!,legitimate,0,0.035233358750001824,safe
 "Hello, good news! The Made4Me bundles you loved are available again. Dial *530# to get your preferred data and voice offers back.",legitimate,0,0.009049888559367173,safe
 We selected the best offers for you to enjoy today! Dial *530# now to subscribe and enjoy your Made4Me offers!,legitimate,0,0.04253577303740243,safe
-"Dear [REDACTED], Ditch the queues! Pay your school fees directly from the Stanbic App in seconds. Tap, Pay, Done! Call [REDACTED] for help.",legitimate,0,0.1703281155841964,safe
+"Dear [REDACTED], Ditch the queues! Pay your school fees directly from the Stanbic App in seconds. Tap, Pay, Done! Call [REDACTED] for help.",legitimate,0,0.1703281155841964,suspicious
 "Your Acc [REDACTED] has been debited with GHS 200.00 on 11/05/26 21:52:23. Ref : B2W VODAFONE WA.Balance: GHS 4,850.25. Helpline:[REDACTED]",legitimate,0,0.0,safe
 Stanbic Bank Ghana: Your OTP for viewing your Debit Card Number is [REDACTED]. Help: [REDACTED],legitimate,0,0.025531688949143226,safe
 "Dear [REDACTED], The Stanbic App will be unavailable for scheduled maintenance from Sat 16 May, 10:00pm to Sun 17 May, 4:30am. USSD and our Online banking will also be offline on Sun 17 May from 12:00am to 4:30am. Our ATMs, Debit, Credit and Prepaid Cards remain available. Need help? Call [REDACTED]",legitimate,0,0.002902916939432661,safe
@@ -2779,7 +2779,7 @@ You have successfully purchased 2.54GB 1 day pack at GHc15. Get More for FREE on
 "Shop, pay and browse more! Enjoy FREE 150MB data reward when you make payment of GHs10 or more to any Merchant number. Dial *110# now and select option 4 to start transacting! T&C apply",legitimate,0,0.01609542670488747,safe
 FREE 100 MB and 20 onnet mins for you. Dial *558# to register and *110# to activate your Telecel Cash account and enjoy.,legitimate,0,0.01671409776425279,safe
 "Pay your DSTV, School Fees, Water bills etc using Telecel Cash. Dial *110# select 'Make Payments' and follow prompts to pay your bill",legitimate,0,0.044242550285471326,safe
-"Did you know you can unlock your Telecel Cash PIN without contacting the Call Centre or a Retail Shop? Just dial *110#, choose option 7 for Self Service, option 1 to Change/Reset/Unlock PIN; then option 3 to Unlock PIN. Remember, to keep your account secure, avoid using your date of birth, phone number, or simple sequences like '1234' as your PIN. Thank you",legitimate,0,0.24734412910331346,safe
+"Did you know you can unlock your Telecel Cash PIN without contacting the Call Centre or a Retail Shop? Just dial *110#, choose option 7 for Self Service, option 1 to Change/Reset/Unlock PIN; then option 3 to Unlock PIN. Remember, to keep your account secure, avoid using your date of birth, phone number, or simple sequences like '1234' as your PIN. Thank you",legitimate,0,0.24734412910331346,suspicious
 "Get Free 100MB data when you buy 200mins special voice package worth Ghc5. Dial *110#, Select option 3 then Special offer to start.",legitimate,0,0.005224849504902212,safe
 "Y'ello, you have received 10.00 GHC from [REDACTED]/Ghanamart. A/c balance is 10.13 GHC. Transaction ID: [REDACTED]. Dial *170*311# to Buy airtime from your Momo wallet and enjoy 100% bonus.",legitimate,0,0.0,safe
 "Y'ello, you have received 4.00 GHC from [REDACTED]/Ghanamart. A/c balance is 10.02 GHC. Transaction ID: [REDACTED]. Dial *170*311# to Buy airtime from your Momo wallet and enjoy 100% bonus.",legitimate,0,0.0,safe
@@ -2788,7 +2788,7 @@ FREE 100 MB and 20 onnet mins for you. Dial *558# to register and *110# to activ
 "Y'ello, you have received 10.00 GHC from [REDACTED]/[REDACTED]. A/c balance is 13.20 GHC. Transaction ID: [REDACTED]. Dial *170*311# to Buy airtime from your Momo wallet and enjoy 100% bonus.",legitimate,0,0.0,safe
 "Dear Valued Customer, We're excited to let you know that starting 1st July 2025, your data bundle volumes will increase by 15%. Plus, enjoy a 50% bonus when you buy your bundle via the myMTN app (4G only). And don't forget, MTN data bundles never expire. For more details, visit www.mtn.com.gh. Thank you for choosing MTN.",legitimate,0,0.011495434223650434,safe
 "Temporary Disruption to Data Bundle purchases: Whilst implementing the data offer, which will provide 15% additional volume of data from today 1st July, 2025, MTN experienced a major technical issue which has affected data bundle purchases, including the data volume offer. As a result, customers are temporarily unable to purchase data bundles. We sincerely apologize for the inconvenience this may cause. Please be assured that our technical teams are working to resolve the issue. Thank you.",legitimate,0,0.053313451225660655,safe
-Go digital with MTN eSIM and experience the future of connectivity. Click: https://mymtn.onelink.me/cB5t/MTN4G1 to activate your digital profile now!,legitimate,0,0.1916214171244383,safe
+Go digital with MTN eSIM and experience the future of connectivity. Click: https://mymtn.onelink.me/cB5t/MTN4G1 to activate your digital profile now!,legitimate,0,0.1916214171244383,suspicious
 Exclusive Offer! Unlock fantastic deals on Just4U. Simply dial *141# or visit the myMTN App via https://mymtn.onelink.me/cB5t/MTN4G6 to purchase your offer now!,legitimate,0,0.13238157190683408,safe
 "Y'ello Valued Customer, Kindly be informed that there is a scheduled maintenance planned for January 2, 2026, from 12:00am to 04:00am in preparation for the new VAT reform tariffs. During this period, airtime and data bundle purchases will not be possible. We apologize for any inconvenience this may cause and appreciate your understanding. Thank you.",legitimate,0,0.0067760872366586814,safe
 Y'ello! you have successfully purchased GHC3 Midnight Bundle and received 8.48 GB. This bundle does not expire,legitimate,0,0.029042798769810176,safe

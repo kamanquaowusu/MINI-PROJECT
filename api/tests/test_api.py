@@ -137,6 +137,52 @@ def test_report_message_validation(client):
     assert client.post("/api/report", json={"message": "x" * 2000}).status_code == 422
 
 
+# Canonical Ghanaian MoMo scam families, deliberately including SHORT and
+# plainly-worded variants -- those score mid-range because they don't match
+# the synthetic training templates, and they are exactly what a too-high
+# safe-band cut lets through. A regression here means real users are being
+# told a real scam is "Safe", so this guards the most important property
+# the system has.
+KNOWN_SCAMS = [
+    "You have received money in error, kindly return it",
+    "Hello dear, I mistakenly sent GHS500 to your number. Please send it back.",
+    "Send me your momo pin",
+    "give me your pin",
+    "Send me the OTP you just received so I can complete the transfer",
+    "This is MTN customer care. What is the code sent to your phone?",
+    "Your SIM will be deactivated. Reply with your ID and PIN to keep it.",
+    "MTN: You have won GHS10,000! Call 0245678901 to claim your prize.",
+    "I am your uncle, I lost my phone. Send GHS300 to this new number.",
+    "Your MoMo account has been blocked. Send your PIN to unlock.",
+]
+
+
+@pytest.mark.parametrize("message", KNOWN_SCAMS)
+def test_known_scams_are_never_shown_as_safe(client, message):
+    r = client.post("/api/check", json={"message": message, "consent_to_log": False})
+    assert r.status_code == 200
+    body = r.json()
+    assert body["band"] != "safe", (
+        "SCAM SHOWN AS SAFE (p={}): {!r} -- the safe-band cut (T_LOW) is too "
+        "high. Do not raise it to silence false positives; fix the model or "
+        "the heuristics instead.".format(body["scam_probability"], message)
+    )
+
+
+def test_real_telco_messages_are_not_flagged(client):
+    # The other side of the trade: genuine MTN/Telecel traffic must stay
+    # usable, so a fix for the above can't just flag everything.
+    legit = [
+        "Y'ello! you have successfully purchased GHC3 Midnight Bundle and received 7.27 GB. This bundle does not expire",
+        "Y'ello! you have received 500 MB free data valid for 3 days.",
+        "GHs 15.00 has been added to your account and will be deducted from your next recharge or bundle activation. GHs 1.50 has been charged as service fee. Dial *505# anytime for more SOS Credit",
+        "Send money to any Bank account with Telecel Cash. Simply Dial *110# Choose Option 1 then Option 3 to start.",
+    ]
+    for message in legit:
+        r = client.post("/api/check", json={"message": message, "consent_to_log": False})
+        assert r.json()["band"] == "safe", "legit telco message flagged: {!r}".format(message)
+
+
 def test_report_ack_not_sent_without_email_config(client):
     # No transport configured in the test environment -> dormant, and the
     # response must NOT claim an email is coming.
