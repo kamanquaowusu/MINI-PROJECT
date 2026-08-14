@@ -21,7 +21,7 @@ const labelStyle = {
   color: COLORS.text500,
 };
 
-export function ReportScamModal({ open, onClose, initialMessage = '', checkId }) {
+export function ReportScamModal({ open, onClose, onDone, initialMessage = '', checkId }) {
   const [message, setMessage] = useState(initialMessage);
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
@@ -69,11 +69,11 @@ export function ReportScamModal({ open, onClose, initialMessage = '', checkId })
         )}
         <button
           type="button"
-          onClick={onClose}
+          onClick={onDone || onClose}
           className="sm-btn sm-btn-primary"
           style={{ alignSelf: 'flex-start', padding: '12px 24px', fontSize: 15 }}
         >
-          Close
+          {onDone ? 'Back to home' : 'Close'}
         </button>
       </Modal>
     );

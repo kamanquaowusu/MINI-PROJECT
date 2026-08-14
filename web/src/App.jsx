@@ -117,6 +117,16 @@ export default function App() {
         onNotHelpful={() => submitFeedback('not_helpful')}
       />
       {result.logged && result.redacted_preview && <RedactedPreview text={result.redacted_preview} />}
+      {/* The check is finished -- give an explicit way out instead of
+          leaving the user on a dead-end result screen. */}
+      <button
+        type="button"
+        onClick={handleClear}
+        className="sm-btn sm-btn-secondary"
+        style={{ width: '100%', padding: 14, fontSize: 15 }}
+      >
+        Check another message
+      </button>
     </>
   );
 
@@ -126,6 +136,10 @@ export default function App() {
       <ReportScamModal
         open={reportOpen}
         onClose={() => setReportOpen(false)}
+        onDone={() => {
+          setReportOpen(false);
+          handleClear();
+        }}
         initialMessage={message}
         checkId={result?.check_id}
       />
@@ -137,7 +151,11 @@ export default function App() {
       <>
         <div className="sm-app">
           <div style={{ background: COLORS.bg, border: `1px solid ${COLORS.border}`, borderRadius: 24 }}>
-            <TopNav onHowItWorks={() => setHowItWorksOpen(true)} onReportScam={() => setReportOpen(true)} />
+            <TopNav
+              onHowItWorks={() => setHowItWorksOpen(true)}
+              onReportScam={() => setReportOpen(true)}
+              onHome={handleClear}
+            />
             <div style={{ padding: 32, display: 'flex', gap: 24, alignItems: 'flex-start' }}>
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 20 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -177,7 +195,7 @@ export default function App() {
             <span>SafeMoMo</span>
             <span style={{ color: COLORS.text400, fontSize: 11 }}>Pilot</span>
           </div>
-          <BrandHeader />
+          <BrandHeader onHome={handleClear} />
           <div style={{ display: 'flex', gap: 20, padding: '0 24px 12px', borderBottom: `1px solid ${COLORS.border}` }}>
             <button type="button" className="sm-btn sm-btn-ghost" style={{ fontSize: 13, fontWeight: 600, color: COLORS.text500 }} onClick={() => setHowItWorksOpen(true)}>
               How it works

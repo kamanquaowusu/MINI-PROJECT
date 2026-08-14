@@ -1,7 +1,7 @@
 import { BrandHeader } from './BrandHeader';
 import { COLORS } from '../theme';
 
-export function TopNav({ onHowItWorks, onReportScam }) {
+export function TopNav({ onHowItWorks, onReportScam, onHome }) {
   return (
     <div
       style={{
@@ -15,7 +15,7 @@ export function TopNav({ onHowItWorks, onReportScam }) {
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <BrandHeader variant="desktop" />
+        <BrandHeader variant="desktop" onHome={onHome} />
         <span
           style={{
             marginLeft: 4,

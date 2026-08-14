@@ -1,12 +1,36 @@
 import { ShieldIcon } from './icons';
 import { COLORS } from '../theme';
 
-export function BrandHeader({ variant = 'mobile' }) {
+export function BrandHeader({ variant = 'mobile', onHome }) {
   const tileSize = variant === 'desktop' ? 34 : 36;
   const nameSize = variant === 'desktop' ? 19 : 17;
 
+  // With onHome the whole lockup becomes the "go home" control, so it must
+  // be a real <button> (keyboard-reachable, announced as a control) rather
+  // than a div with a click handler.
+  const Tag = onHome ? 'button' : 'div';
+  const interactiveProps = onHome
+    ? {
+        type: 'button',
+        onClick: onHome,
+        'aria-label': 'SafeMoMo — back to home',
+        className: 'sm-brand-home',
+      }
+    : {};
+
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: variant === 'desktop' ? 0 : '12px 20px 16px' }}>
+    <Tag
+      {...interactiveProps}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 12,
+        padding: variant === 'desktop' ? 0 : '12px 20px 16px',
+        ...(onHome
+          ? { background: 'none', border: 0, textAlign: 'left', cursor: 'pointer', font: 'inherit' }
+          : {}),
+      }}
+    >
       <div
         style={{
           width: tileSize,
@@ -40,6 +64,6 @@ export function BrandHeader({ variant = 'mobile' }) {
           </div>
         )}
       </div>
-    </div>
+    </Tag>
   );
 }
