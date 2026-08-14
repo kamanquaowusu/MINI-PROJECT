@@ -120,11 +120,7 @@ export function ReportScamModal({ open, onClose, initialMessage = '', checkId })
           type="submit"
           disabled={status === 'sending' || message.trim().length === 0}
           className="sm-btn sm-btn-danger"
-          style={{
-            padding: 14,
-            background: status === 'sending' || message.trim().length === 0 ? '#E9A6A6' : '#DC2626',
-            fontSize: 16,
-          }}
+          style={{ padding: 14, fontSize: 16 }}
         >
           {status === 'sending' ? 'Sending…' : 'Submit report'}
         </button>

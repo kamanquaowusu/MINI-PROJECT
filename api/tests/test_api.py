@@ -100,3 +100,38 @@ def test_shadow_summary_reflects_checks(client):
     assert r.status_code == 200
     body = r.json()
     assert body["checks_total"] >= 1
+
+
+def test_report_persists_redacted_message(client, tmp_path):
+    r = client.post("/api/report", json={
+        "message": "Send your PIN to 0244123456 to claim GHS500",
+        "phone": "0501234567",
+        "email": "user@example.com",
+    })
+    assert r.status_code == 200
+    body = r.json()
+    assert body["recorded"] is True
+    assert body["report_id"].startswith("rpt_")
+
+    reports_file = tmp_path / "shadow" / "reports.jsonl"
+    last = json.loads(reports_file.read_text().strip().splitlines()[-1])
+    # The reported message must be stored redacted; the reporter's own
+    # contact details are stored as given (they volunteered them for follow-up).
+    assert "0244123456" not in last["message_redacted"]
+    assert last["phone"] == "0501234567"
+    assert last["email"] == "user@example.com"
+    assert last["check_id"] is None
+
+
+def test_report_optional_fields_default_null(client, tmp_path):
+    r = client.post("/api/report", json={"message": "suspicious scam text here"})
+    assert r.status_code == 200
+    reports_file = tmp_path / "shadow" / "reports.jsonl"
+    last = json.loads(reports_file.read_text().strip().splitlines()[-1])
+    assert last["phone"] is None
+    assert last["email"] is None
+
+
+def test_report_message_validation(client):
+    assert client.post("/api/report", json={"message": ""}).status_code == 422
+    assert client.post("/api/report", json={"message": "x" * 2000}).status_code == 422

@@ -1,15 +1,27 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { COLORS } from '../theme';
 import { XMarkIcon } from './icons';
 
 export function Modal({ open, onClose, title, children }) {
+  const dialogRef = useRef(null);
+
   useEffect(() => {
     if (!open) return;
+    // Scroll-lock the page and move focus into the dialog; restore both on
+    // close so keyboard users land back where they were.
+    const previousFocus = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    dialogRef.current?.focus();
     function handleKey(e) {
       if (e.key === 'Escape') onClose();
     }
     document.addEventListener('keydown', handleKey);
-    return () => document.removeEventListener('keydown', handleKey);
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = previousOverflow;
+      if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
+    };
   }, [open, onClose]);
 
   if (!open) return null;
@@ -33,6 +45,8 @@ export function Modal({ open, onClose, title, children }) {
         role="dialog"
         aria-modal="true"
         aria-label={title}
+        ref={dialogRef}
+        tabIndex={-1}
         onClick={(e) => e.stopPropagation()}
         style={{
           background: '#FFFFFF',

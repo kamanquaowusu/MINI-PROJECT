@@ -65,7 +65,6 @@ export function MessageInput({ value, onChange, onSubmit, onClear, disabled, var
             flex: isDesktop ? 'none' : 1,
             width: isDesktop ? 'auto' : '100%',
             padding: isDesktop ? '16px 34px' : '19px',
-            background: disabled || value.trim().length === 0 ? '#9BBFBB' : COLORS.teal,
             fontSize: isDesktop ? 16 : 17,
           }}
         >

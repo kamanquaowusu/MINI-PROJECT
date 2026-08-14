@@ -99,6 +99,9 @@ input:focus-visible,
 .sm-btn-primary:hover:not(:disabled) {
   background: var(--sm-teal-dark);
 }
+.sm-btn-primary:disabled {
+  background: #9BBFBB;
+}
 
 .sm-btn-danger {
   background: var(--sm-danger);
@@ -106,6 +109,9 @@ input:focus-visible,
 }
 .sm-btn-danger:hover:not(:disabled) {
   background: var(--sm-danger-dark);
+}
+.sm-btn-danger:disabled {
+  background: #E9A6A6;
 }
 
 .sm-btn-secondary {

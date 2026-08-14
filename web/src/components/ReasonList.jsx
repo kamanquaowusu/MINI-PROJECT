@@ -1,6 +1,5 @@
 import { CheckMarkIcon, XMarkIcon } from './icons';
-import { COLORS } from '../theme';
-import { BAND_THEME } from '../theme';
+import { BAND_THEME, COLORS } from '../theme';
 
 function BulletIcon({ reasonKind }) {
   if (reasonKind === 'clear') return <CheckMarkIcon size={18} stroke="#15803D" />;
