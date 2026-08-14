@@ -76,7 +76,9 @@ class ReportResponse(BaseModel):
     recorded: bool
     report_id: str
     message: str
-    ack_email_queued: bool = False
+    # True only when the email provider actually accepted the message, so
+    # the UI never promises a confirmation email that cannot arrive.
+    ack_email_sent: bool = False
 
 
 class HealthResponse(BaseModel):

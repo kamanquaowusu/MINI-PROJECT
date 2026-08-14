@@ -27,7 +27,7 @@ export function ReportScamModal({ open, onClose, initialMessage = '', checkId })
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState(null); // null | 'sending' | 'done' | 'error'
   const [error, setError] = useState(null);
-  const [ackEmailQueued, setAckEmailQueued] = useState(false);
+  const [ackEmailSent, setAckEmailSent] = useState(false);
 
   useEffect(() => {
     if (open) {
@@ -36,7 +36,7 @@ export function ReportScamModal({ open, onClose, initialMessage = '', checkId })
       setEmail('');
       setStatus(null);
       setError(null);
-      setAckEmailQueued(false);
+      setAckEmailSent(false);
     }
   }, [open, initialMessage]);
 
@@ -47,7 +47,7 @@ export function ReportScamModal({ open, onClose, initialMessage = '', checkId })
     setError(null);
     try {
       const res = await submitReport({ message, phone, email, checkId });
-      setAckEmailQueued(Boolean(res?.ack_email_queued));
+      setAckEmailSent(Boolean(res?.ack_email_sent));
       setStatus('done');
     } catch (err) {
       setError(err.message || 'network error');
@@ -62,9 +62,9 @@ export function ReportScamModal({ open, onClose, initialMessage = '', checkId })
           Thanks — your report has been received. It has been seen and will be considered by the
           team. If a follow-up is needed, we'll reach you on the contact details you provided.
         </p>
-        {ackEmailQueued && (
+        {ackEmailSent && (
           <p style={{ margin: 0, fontFamily: "'DM Sans', sans-serif", fontSize: 14, lineHeight: 1.5, color: COLORS.text500 }}>
-            A confirmation email is on its way to the address you entered.
+            A confirmation email has been sent to the address you entered.
           </p>
         )}
         <button

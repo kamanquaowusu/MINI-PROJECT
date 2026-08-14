@@ -137,22 +137,27 @@ def test_report_message_validation(client):
     assert client.post("/api/report", json={"message": "x" * 2000}).status_code == 422
 
 
-def test_report_ack_email_not_queued_without_smtp_config(client):
-    # No SMTP credentials in the test environment -> dormant, never queued.
+def test_report_ack_not_sent_without_email_config(client):
+    # No transport configured in the test environment -> dormant, and the
+    # response must NOT claim an email is coming.
     r = client.post("/api/report", json={
         "message": "scam text needing ack",
         "email": "victim@example.com",
     })
     assert r.status_code == 200
-    assert r.json()["ack_email_queued"] is False
+    assert r.json()["ack_email_sent"] is False
 
 
-def test_report_ack_email_queued_when_smtp_configured(client, monkeypatch):
+def test_report_ack_reports_real_send_result(client, monkeypatch):
     import api.emailer as emailer_mod
 
     sent = []
-    monkeypatch.setattr(emailer_mod, "smtp_configured", lambda: True)
-    monkeypatch.setattr(emailer_mod, "send_report_ack", lambda to, rid: sent.append((to, rid)))
+
+    def fake_send(to, rid):
+        sent.append((to, rid))
+        return True
+
+    monkeypatch.setattr(emailer_mod, "send_report_ack", fake_send)
 
     r = client.post("/api/report", json={
         "message": "scam text needing ack",
@@ -160,11 +165,81 @@ def test_report_ack_email_queued_when_smtp_configured(client, monkeypatch):
     })
     assert r.status_code == 200
     body = r.json()
-    assert body["ack_email_queued"] is True
-    # TestClient executes background tasks before returning the response.
+    assert body["ack_email_sent"] is True
     assert sent == [("victim@example.com", body["report_id"])]
 
-    # No email supplied -> nothing queued even with SMTP configured.
+    # No email supplied -> no send attempted at all.
     r2 = client.post("/api/report", json={"message": "another scam text"})
-    assert r2.json()["ack_email_queued"] is False
+    assert r2.json()["ack_email_sent"] is False
     assert len(sent) == 1
+
+
+def test_report_succeeds_and_does_not_promise_mail_when_send_fails(client, monkeypatch):
+    # A provider outage must still record the report, and must not claim
+    # an email was sent -- the bug that let the live site promise mail
+    # that Render's free tier could never deliver.
+    import api.emailer as emailer_mod
+
+    monkeypatch.setattr(emailer_mod, "send_report_ack", lambda to, rid: False)
+
+    r = client.post("/api/report", json={
+        "message": "scam text needing ack",
+        "email": "victim@example.com",
+    })
+    assert r.status_code == 200
+    body = r.json()
+    assert body["recorded"] is True
+    assert body["ack_email_sent"] is False
+
+
+def test_brevo_transport_posts_expected_payload(monkeypatch):
+    # Exercises the Brevo HTTP path itself (no network): correct endpoint,
+    # api-key header, and sender/recipient payload shape.
+    import api.config as config_mod
+    import api.emailer as emailer_mod
+
+    monkeypatch.setattr(config_mod, "BREVO_API_KEY", "test-key")
+    monkeypatch.setattr(config_mod, "FROM_EMAIL", "safemomo@example.com")
+
+    captured = {}
+
+    class FakeResponse:
+        status = 201
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+    def fake_urlopen(request, timeout=None):
+        captured["url"] = request.full_url
+        captured["headers"] = {k.lower(): v for k, v in request.headers.items()}
+        captured["body"] = json.loads(request.data.decode("utf-8"))
+        captured["timeout"] = timeout
+        return FakeResponse()
+
+    monkeypatch.setattr(emailer_mod.urllib.request, "urlopen", fake_urlopen)
+
+    assert emailer_mod.send_report_ack("victim@example.com", "rpt_abc123") is True
+    assert captured["url"] == "https://api.brevo.com/v3/smtp/email"
+    assert captured["headers"]["api-key"] == "test-key"
+    assert captured["body"]["sender"]["email"] == "safemomo@example.com"
+    assert captured["body"]["to"] == [{"email": "victim@example.com"}]
+    assert "rpt_abc123" in captured["body"]["textContent"]
+    assert captured["timeout"] == emailer_mod.SEND_TIMEOUT_SECONDS
+
+
+def test_brevo_failure_returns_false_and_never_raises(monkeypatch):
+    import api.config as config_mod
+    import api.emailer as emailer_mod
+
+    monkeypatch.setattr(config_mod, "BREVO_API_KEY", "test-key")
+    monkeypatch.setattr(config_mod, "FROM_EMAIL", "safemomo@example.com")
+
+    def boom(request, timeout=None):
+        raise OSError("network unreachable")
+
+    monkeypatch.setattr(emailer_mod.urllib.request, "urlopen", boom)
+
+    assert emailer_mod.send_report_ack("victim@example.com", "rpt_abc123") is False

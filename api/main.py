@@ -14,7 +14,7 @@ from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 
-from fastapi import BackgroundTasks, FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
@@ -188,7 +188,7 @@ def submit_feedback(req: FeedbackRequest):
 
 
 @app.post("/api/report", response_model=ReportResponse)
-def submit_report(req: ReportRequest, background: BackgroundTasks):
+def submit_report(req: ReportRequest):
     message_redacted, _ = redact(req.message)
 
     report_id = _new_id("rpt")
@@ -203,18 +203,21 @@ def submit_report(req: ReportRequest, background: BackgroundTasks):
     }
     store.append_report(record)
 
-    # Queue the acknowledgment email AFTER the report is safely persisted;
-    # a failed email never fails (or slows) the report itself.
-    ack_email_queued = False
-    if req.email and emailer.smtp_configured():
-        background.add_task(emailer.send_report_ack, req.email, report_id)
-        ack_email_queued = True
+    # Send the acknowledgment AFTER the report is safely persisted, and
+    # synchronously so the response can report what actually happened --
+    # send_report_ack swallows its own errors and returns False, so a mail
+    # outage still yields a successful report, just without the promise of
+    # an email. (A background task could only ever report "queued", which
+    # is what previously let the UI promise mail that never arrived.)
+    ack_email_sent = False
+    if req.email:
+        ack_email_sent = emailer.send_report_ack(req.email, report_id)
 
     return ReportResponse(
         recorded=True,
         report_id=report_id,
         message="Thanks — your report has been received. It has been seen and will be considered by the team.",
-        ack_email_queued=ack_email_queued,
+        ack_email_sent=ack_email_sent,
     )
 
 

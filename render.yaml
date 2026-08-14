@@ -5,7 +5,10 @@
 # `sync: false` means "Render manages this in the dashboard, ignore the
 # blueprint", so pairing it with a value is invalid and fails the whole
 # blueprint sync. The sending address is not a credential, so it syncs
-# normally; only the Gmail App Password is dashboard-managed.
+# normally; only the API key is dashboard-managed.
+#
+# Email goes through Brevo's HTTP API, NOT SMTP: Render's free tier blocks
+# outbound SMTP ports 25/465/587, so an SMTP send can never succeed here.
 services:
   - type: web
     name: safemomo
@@ -13,7 +16,7 @@ services:
     plan: free
     healthCheckPath: /api/health
     envVars:
-      - key: SAFEMOMO_SMTP_USER
+      - key: SAFEMOMO_FROM_EMAIL
         value: safemomoapi@gmail.com
-      - key: SAFEMOMO_SMTP_PASSWORD
+      - key: SAFEMOMO_BREVO_API_KEY
         sync: false

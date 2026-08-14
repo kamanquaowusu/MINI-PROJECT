@@ -4,14 +4,26 @@ The repo is deploy-ready: one Docker service serves the API and the built
 frontend from a single public URL. Everything below is a one-time setup of
 about 10 minutes.
 
-## 1. Create the Gmail App Password (for report acknowledgment emails)
+## 1. Create a Brevo API key (for report acknowledgment emails)
 
-1. Make sure 2-Step Verification is ON for your Google account
-   (myaccount.google.com -> Security).
-2. Go to https://myaccount.google.com/apppasswords
-3. Create a password named e.g. "SafeMoMo" and copy the 16-character code.
-   This is what goes in `SAFEMOMO_SMTP_PASSWORD` — NOT your normal Gmail
-   password.
+Render's **free** tier blocks outbound SMTP ports (25, 465, 587), so Gmail
+SMTP can never send from a free instance — the connection just times out.
+Brevo's HTTP API runs over normal HTTPS (443), which is not blocked, and
+its free tier allows 300 emails/day.
+
+1. Sign up at https://www.brevo.com (free plan, no card).
+2. Verify `safemomoapi@gmail.com` as a **sender**: Senders, Domains & IPs ->
+   Senders -> Add a sender. Brevo emails that address a confirmation link;
+   click it. (No domain purchase needed — a verified single sender is
+   enough.)
+3. Create the key: SMTP & API -> API Keys -> Generate a new API key.
+   Copy it — this is `SAFEMOMO_BREVO_API_KEY`.
+
+The sender address itself is set in `render.yaml` as `SAFEMOMO_FROM_EMAIL`
+and needs no dashboard entry.
+
+If no key is set, reports still work perfectly — the app simply doesn't
+claim an email was sent.
 
 ## 2. Deploy on Render
 
@@ -20,8 +32,7 @@ about 10 minutes.
    `kamanquaowusu/MINI-PROJECT` repository. Render reads `render.yaml`
    and proposes the `safemomo` web service (free plan, Docker).
 3. When prompted for environment variables, set:
-   - `SAFEMOMO_SMTP_USER` = your Gmail address
-   - `SAFEMOMO_SMTP_PASSWORD` = the App Password from step 1
+   - `SAFEMOMO_BREVO_API_KEY` = the API key from step 1
 4. Click **Apply** / **Create**. First build takes ~5–10 minutes
    (npm build + pip install). The service URL will look like
    `https://safemomo.onrender.com`.
@@ -43,5 +54,9 @@ Every future `git push` to `main` redeploys automatically.
   is wiped on every redeploy or restart. Before retraining from shadow
   data, download the JSONL files from the service shell, or upgrade to a
   paid instance with a persistent disk.
+- **No SMTP:** free instances cannot reach SMTP ports at all, which is why
+  email goes through Brevo's HTTP API. Gmail SMTP would only work on a
+  paid instance. See:
+  https://render.com/changelog/free-web-services-will-no-longer-allow-outbound-traffic-to-smtp-ports
 - Acknowledgment emails stay dormant (reports still work, users still see
-  the on-screen confirmation) if the SMTP env vars are unset.
+  the on-screen confirmation) if `SAFEMOMO_BREVO_API_KEY` is unset.
