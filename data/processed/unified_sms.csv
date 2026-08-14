@@ -12381,53 +12381,118 @@ How was your trip to town?,How was your trip to town?,0,personal,unknown,gap_fil
 "mum I have sent your money, check your wallet","mum I have sent your money, check your wallet",0,personal,unknown,gap_fill
 "Kwame I have sent your money, check your wallet","Kwame I have sent your money, check your wallet",0,personal,unknown,gap_fill
 "Kojo I have sent your money, check your wallet","Kojo I have sent your money, check your wallet",0,personal,unknown,gap_fill
-"Please buy me credit, I'll refund you tonight","Please buy me credit, I'll refund you tonight",0,personal,unknown,gap_fill
-"Please buy me credit, I'll refund you at 3pm","Please buy me credit, I'll refund you at 3pm",0,personal,unknown,gap_fill
-"Please buy me credit, I'll refund you next week","Please buy me credit, I'll refund you next week",0,personal,unknown,gap_fill
-"Please buy me credit, I'll refund you on Sunday","Please buy me credit, I'll refund you on Sunday",0,personal,unknown,gap_fill
-"Please buy me credit, I'll refund you this evening","Please buy me credit, I'll refund you this evening",0,personal,unknown,gap_fill
-"Please buy me credit, I'll refund you today","Please buy me credit, I'll refund you today",0,personal,unknown,gap_fill
-The fare to the mall is 15 cedis now,The fare to the mall is 15 cedis now,0,personal,unknown,gap_fill
+The fare to church is 15 cedis now,The fare to church is 15 cedis now,0,personal,unknown,gap_fill
 The fare to Kumasi is 15 cedis now,The fare to Kumasi is 15 cedis now,0,personal,unknown,gap_fill
-The fare to school is 15 cedis now,The fare to school is 15 cedis now,0,personal,unknown,gap_fill
-The fare to the hostel is 15 cedis now,The fare to the hostel is 15 cedis now,0,personal,unknown,gap_fill
-The fare to Accra is 15 cedis now,The fare to Accra is 15 cedis now,0,personal,unknown,gap_fill
 The fare to the office is 15 cedis now,The fare to the office is 15 cedis now,0,personal,unknown,gap_fill
+The fare to the hostel is 15 cedis now,The fare to the hostel is 15 cedis now,0,personal,unknown,gap_fill
 The fare to town is 15 cedis now,The fare to town is 15 cedis now,0,personal,unknown,gap_fill
-I paid the school fees on Sunday,I paid the school fees on Sunday,0,personal,unknown,gap_fill
-I paid the school fees tonight,I paid the school fees tonight,0,personal,unknown,gap_fill
-I paid the school fees today,I paid the school fees today,0,personal,unknown,gap_fill
-I paid the school fees tomorrow,I paid the school fees tomorrow,0,personal,unknown,gap_fill
+The fare to school is 15 cedis now,The fare to school is 15 cedis now,0,personal,unknown,gap_fill
+The fare to Tema is 15 cedis now,The fare to Tema is 15 cedis now,0,personal,unknown,gap_fill
+The fare to the mall is 15 cedis now,The fare to the mall is 15 cedis now,0,personal,unknown,gap_fill
+I paid the school fees at 3pm,I paid the school fees at 3pm,0,personal,unknown,gap_fill
+I paid the school fees at 8am,I paid the school fees at 8am,0,personal,unknown,gap_fill
 I paid the school fees next week,I paid the school fees next week,0,personal,unknown,gap_fill
-Let's split the bill when we meet at 8am,Let's split the bill when we meet at 8am,0,personal,unknown,gap_fill
-Let's split the bill when we meet tonight,Let's split the bill when we meet tonight,0,personal,unknown,gap_fill
-Let's split the bill when we meet at 3pm,Let's split the bill when we meet at 3pm,0,personal,unknown,gap_fill
-Let's split the bill when we meet on Friday,Let's split the bill when we meet on Friday,0,personal,unknown,gap_fill
-Let's split the bill when we meet next week,Let's split the bill when we meet next week,0,personal,unknown,gap_fill
+I paid the school fees today,I paid the school fees today,0,personal,unknown,gap_fill
+I paid the school fees on Sunday,I paid the school fees on Sunday,0,personal,unknown,gap_fill
+I paid the school fees tomorrow,I paid the school fees tomorrow,0,personal,unknown,gap_fill
 Let's split the bill when we meet on Sunday,Let's split the bill when we meet on Sunday,0,personal,unknown,gap_fill
+Let's split the bill when we meet tonight,Let's split the bill when we meet tonight,0,personal,unknown,gap_fill
 Let's split the bill when we meet today,Let's split the bill when we meet today,0,personal,unknown,gap_fill
-"mum owes me from last month, I'll remind him","mum owes me from last month, I'll remind him",0,personal,unknown,gap_fill
-"Adwoa owes me from last month, I'll remind him","Adwoa owes me from last month, I'll remind him",0,personal,unknown,gap_fill
-"Kofi owes me from last month, I'll remind him","Kofi owes me from last month, I'll remind him",0,personal,unknown,gap_fill
-"Yaw owes me from last month, I'll remind him","Yaw owes me from last month, I'll remind him",0,personal,unknown,gap_fill
-"Ama owes me from last month, I'll remind him","Ama owes me from last month, I'll remind him",0,personal,unknown,gap_fill
-"Kojo owes me from last month, I'll remind him","Kojo owes me from last month, I'll remind him",0,personal,unknown,gap_fill
-"Kwame owes me from last month, I'll remind him","Kwame owes me from last month, I'll remind him",0,personal,unknown,gap_fill
-I withdrew the money at Accra already,I withdrew the money at Accra already,0,personal,unknown,gap_fill
-I withdrew the money at the hostel already,I withdrew the money at the hostel already,0,personal,unknown,gap_fill
+Let's split the bill when we meet tomorrow,Let's split the bill when we meet tomorrow,0,personal,unknown,gap_fill
+Let's split the bill when we meet next week,Let's split the bill when we meet next week,0,personal,unknown,gap_fill
 I withdrew the money at church already,I withdrew the money at church already,0,personal,unknown,gap_fill
+I withdrew the money at Accra already,I withdrew the money at Accra already,0,personal,unknown,gap_fill
+I withdrew the money at town already,I withdrew the money at town already,0,personal,unknown,gap_fill
 I withdrew the money at the office already,I withdrew the money at the office already,0,personal,unknown,gap_fill
-I withdrew the money at the station already,I withdrew the money at the station already,0,personal,unknown,gap_fill
-I withdrew the money at the mall already,I withdrew the money at the mall already,0,personal,unknown,gap_fill
-"Rent is due next week, I have kept mine","Rent is due next week, I have kept mine",0,personal,unknown,gap_fill
-"Rent is due on Sunday, I have kept mine","Rent is due on Sunday, I have kept mine",0,personal,unknown,gap_fill
-"Rent is due at 3pm, I have kept mine","Rent is due at 3pm, I have kept mine",0,personal,unknown,gap_fill
+I withdrew the money at the hostel already,I withdrew the money at the hostel already,0,personal,unknown,gap_fill
+I withdrew the money at school already,I withdrew the money at school already,0,personal,unknown,gap_fill
+"Rent is due at 8am, I have kept mine","Rent is due at 8am, I have kept mine",0,personal,unknown,gap_fill
 "Rent is due tomorrow, I have kept mine","Rent is due tomorrow, I have kept mine",0,personal,unknown,gap_fill
 "Rent is due today, I have kept mine","Rent is due today, I have kept mine",0,personal,unknown,gap_fill
-Please keep 20 cedis for me until tonight,Please keep 20 cedis for me until tonight,0,personal,unknown,gap_fill
-Please keep 20 cedis for me until on Sunday,Please keep 20 cedis for me until on Sunday,0,personal,unknown,gap_fill
-Please keep 20 cedis for me until today,Please keep 20 cedis for me until today,0,personal,unknown,gap_fill
-Please keep 20 cedis for me until tomorrow,Please keep 20 cedis for me until tomorrow,0,personal,unknown,gap_fill
-Please keep 20 cedis for me until at 3pm,Please keep 20 cedis for me until at 3pm,0,personal,unknown,gap_fill
-Please keep 20 cedis for me until on Friday,Please keep 20 cedis for me until on Friday,0,personal,unknown,gap_fill
-Please keep 20 cedis for me until this evening,Please keep 20 cedis for me until this evening,0,personal,unknown,gap_fill
+"Rent is due next week, I have kept mine","Rent is due next week, I have kept mine",0,personal,unknown,gap_fill
+"Rent is due on Sunday, I have kept mine","Rent is due on Sunday, I have kept mine",0,personal,unknown,gap_fill
+The transport fare has gone up again,The transport fare has gone up again,0,personal,unknown,gap_fill
+"I'm on my way, be there in about 30 minutes","I'm on my way, be there in about 30 minutes",0,personal,unknown,gap_fill
+"I'm on my way, be there in 5 minutes","I'm on my way, be there in 5 minutes",0,personal,unknown,gap_fill
+"I'm on my way, be there in 2 hours","I'm on my way, be there in 2 hours",0,personal,unknown,gap_fill
+"I'm on my way, be there in an hour","I'm on my way, be there in an hour",0,personal,unknown,gap_fill
+"On my way, will reach in 5 minutes","On my way, will reach in 5 minutes",0,personal,unknown,gap_fill
+"On my way, will reach shortly","On my way, will reach shortly",0,personal,unknown,gap_fill
+"On my way, will reach very soon","On my way, will reach very soon",0,personal,unknown,gap_fill
+"On my way, will reach in about 30 minutes","On my way, will reach in about 30 minutes",0,personal,unknown,gap_fill
+"On my way, will reach in 10 minutes","On my way, will reach in 10 minutes",0,personal,unknown,gap_fill
+I'll be there in 2 hours,I'll be there in 2 hours,0,personal,unknown,gap_fill
+I'll be there in 5 minutes,I'll be there in 5 minutes,0,personal,unknown,gap_fill
+I'll be there in 10 minutes,I'll be there in 10 minutes,0,personal,unknown,gap_fill
+I'll be there shortly,I'll be there shortly,0,personal,unknown,gap_fill
+"Almost there, in 2 hours","Almost there, in 2 hours",0,personal,unknown,gap_fill
+"Almost there, in 5 minutes","Almost there, in 5 minutes",0,personal,unknown,gap_fill
+"Almost there, in 20 minutes","Almost there, in 20 minutes",0,personal,unknown,gap_fill
+"Almost there, in an hour","Almost there, in an hour",0,personal,unknown,gap_fill
+"Almost there, very soon","Almost there, very soon",0,personal,unknown,gap_fill
+"Just setting off, arriving very soon","Just setting off, arriving very soon",0,personal,unknown,gap_fill
+"Just setting off, arriving shortly","Just setting off, arriving shortly",0,personal,unknown,gap_fill
+"Just setting off, arriving in 20 minutes","Just setting off, arriving in 20 minutes",0,personal,unknown,gap_fill
+"Just setting off, arriving in about 30 minutes","Just setting off, arriving in about 30 minutes",0,personal,unknown,gap_fill
+"Give me in an hour, I'm coming","Give me in an hour, I'm coming",0,personal,unknown,gap_fill
+"Give me very soon, I'm coming","Give me very soon, I'm coming",0,personal,unknown,gap_fill
+"Give me in 5 minutes, I'm coming","Give me in 5 minutes, I'm coming",0,personal,unknown,gap_fill
+"Give me in 2 hours, I'm coming","Give me in 2 hours, I'm coming",0,personal,unknown,gap_fill
+I'll call you back very soon,I'll call you back very soon,0,personal,unknown,gap_fill
+I'll call you back in about 30 minutes,I'll call you back in about 30 minutes,0,personal,unknown,gap_fill
+I'll call you back in 5 minutes,I'll call you back in 5 minutes,0,personal,unknown,gap_fill
+I'll call you back in 20 minutes,I'll call you back in 20 minutes,0,personal,unknown,gap_fill
+The car is coming very soon,The car is coming very soon,0,personal,unknown,gap_fill
+The car is coming in 2 hours,The car is coming in 2 hours,0,personal,unknown,gap_fill
+The car is coming in 20 minutes,The car is coming in 20 minutes,0,personal,unknown,gap_fill
+The car is coming in 5 minutes,The car is coming in 5 minutes,0,personal,unknown,gap_fill
+We will start shortly,We will start shortly,0,personal,unknown,gap_fill
+We will start in 20 minutes,We will start in 20 minutes,0,personal,unknown,gap_fill
+We will start in an hour,We will start in an hour,0,personal,unknown,gap_fill
+We will start in 10 minutes,We will start in 10 minutes,0,personal,unknown,gap_fill
+"I'm leaving town now, see you in about 30 minutes","I'm leaving town now, see you in about 30 minutes",0,personal,unknown,gap_fill
+"I'm leaving Tema now, see you in 20 minutes","I'm leaving Tema now, see you in 20 minutes",0,personal,unknown,gap_fill
+"I'm leaving the mall now, see you in 10 minutes","I'm leaving the mall now, see you in 10 minutes",0,personal,unknown,gap_fill
+"I'm leaving the hostel now, see you in about 30 minutes","I'm leaving the hostel now, see you in about 30 minutes",0,personal,unknown,gap_fill
+"I'm leaving the station now, see you in 2 hours","I'm leaving the station now, see you in 2 hours",0,personal,unknown,gap_fill
+"Hold on, I'll send it in an hour","Hold on, I'll send it in an hour",0,personal,unknown,gap_fill
+"Hold on, I'll send it shortly","Hold on, I'll send it shortly",0,personal,unknown,gap_fill
+"Hold on, I'll send it very soon","Hold on, I'll send it very soon",0,personal,unknown,gap_fill
+"Hold on, I'll send it in 2 hours","Hold on, I'll send it in 2 hours",0,personal,unknown,gap_fill
+"Coming in an hour, don't leave","Coming in an hour, don't leave",0,personal,unknown,gap_fill
+"Coming in 20 minutes, don't leave","Coming in 20 minutes, don't leave",0,personal,unknown,gap_fill
+"Coming in about 30 minutes, don't leave","Coming in about 30 minutes, don't leave",0,personal,unknown,gap_fill
+"Coming in 2 hours, don't leave","Coming in 2 hours, don't leave",0,personal,unknown,gap_fill
+"Coming shortly, don't leave","Coming shortly, don't leave",0,personal,unknown,gap_fill
+Chale abeg send me 150 cedis I go pay you back tomorrow,Chale abeg send me 150 cedis I go pay you back tomorrow,1,impersonation,unknown,gap_fill
+Chale abeg send me 500 cedis I go pay you back tomorrow,Chale abeg send me 500 cedis I go pay you back tomorrow,1,impersonation,unknown,gap_fill
+Chale abeg send me 200 cedis I go pay you back tomorrow,Chale abeg send me 200 cedis I go pay you back tomorrow,1,impersonation,unknown,gap_fill
+Chale abeg send me 100 cedis I go pay you back tomorrow,Chale abeg send me 100 cedis I go pay you back tomorrow,1,impersonation,unknown,gap_fill
+"Abeg send me 150 cedis, I go refund you sharp sharp","Abeg send me 150 cedis, I go refund you sharp sharp",1,impersonation,unknown,gap_fill
+"Abeg send me 100 cedis, I go refund you sharp sharp","Abeg send me 100 cedis, I go refund you sharp sharp",1,impersonation,unknown,gap_fill
+"Abeg send me 200 cedis, I go refund you sharp sharp","Abeg send me 200 cedis, I go refund you sharp sharp",1,impersonation,unknown,gap_fill
+"Abeg send me 300 cedis, I go refund you sharp sharp","Abeg send me 300 cedis, I go refund you sharp sharp",1,impersonation,unknown,gap_fill
+"Please send me GHS150 today, I will pay back next week","Please send me GHS150 today, I will pay back next week",1,impersonation,unknown,gap_fill
+"Please send me GHS100 today, I will pay back next week","Please send me GHS100 today, I will pay back next week",1,impersonation,unknown,gap_fill
+"Please send me GHS200 today, I will pay back next week","Please send me GHS200 today, I will pay back next week",1,impersonation,unknown,gap_fill
+"Please send me GHS50 today, I will pay back next week","Please send me GHS50 today, I will pay back next week",1,impersonation,unknown,gap_fill
+"Bro send me 150 cedis quick, I dey for trouble","Bro send me 150 cedis quick, I dey for trouble",1,impersonation,unknown,gap_fill
+"Bro send me 50 cedis quick, I dey for trouble","Bro send me 50 cedis quick, I dey for trouble",1,impersonation,unknown,gap_fill
+"Bro send me 500 cedis quick, I dey for trouble","Bro send me 500 cedis quick, I dey for trouble",1,impersonation,unknown,gap_fill
+"Kindly send me GHS500, I will return it next week","Kindly send me GHS500, I will return it next week",1,impersonation,unknown,gap_fill
+"Kindly send me GHS100, I will return it next week","Kindly send me GHS100, I will return it next week",1,impersonation,unknown,gap_fill
+"Kindly send me GHS100, I will return it tomorrow","Kindly send me GHS100, I will return it tomorrow",1,impersonation,unknown,gap_fill
+"Kindly send me GHS500, I will return it tomorrow","Kindly send me GHS500, I will return it tomorrow",1,impersonation,unknown,gap_fill
+"Please I need GHS50 urgently, send to this number","Please I need GHS50 urgently, send to this number",1,impersonation,unknown,gap_fill
+"Please I need GHS300 urgently, send to this number","Please I need GHS300 urgently, send to this number",1,impersonation,unknown,gap_fill
+"Please I need GHS150 urgently, send to this number","Please I need GHS150 urgently, send to this number",1,impersonation,unknown,gap_fill
+"Please I need GHS100 urgently, send to this number","Please I need GHS100 urgently, send to this number",1,impersonation,unknown,gap_fill
+"Send me small money 200 cedis, I go pay you","Send me small money 200 cedis, I go pay you",1,impersonation,unknown,gap_fill
+"Send me small money 50 cedis, I go pay you","Send me small money 50 cedis, I go pay you",1,impersonation,unknown,gap_fill
+"Send me small money 100 cedis, I go pay you","Send me small money 100 cedis, I go pay you",1,impersonation,unknown,gap_fill
+Abeg borrow me GHS500 till month end,Abeg borrow me GHS500 till month end,1,impersonation,unknown,gap_fill
+Abeg borrow me GHS150 till month end,Abeg borrow me GHS150 till month end,1,impersonation,unknown,gap_fill
+Abeg borrow me GHS300 till month end,Abeg borrow me GHS300 till month end,1,impersonation,unknown,gap_fill
+"Please buy me credit, I will refund you later","Please buy me credit, I will refund you later",1,impersonation,unknown,gap_fill
+Keep GHS50 for me and send it to this number,Keep GHS50 for me and send it to this number,1,impersonation,unknown,gap_fill
+Keep GHS500 for me and send it to this number,Keep GHS500 for me and send it to this number,1,impersonation,unknown,gap_fill

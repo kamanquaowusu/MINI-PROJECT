@@ -334,53 +334,118 @@
 {"id": "gap_00392", "text": "mum I have sent your money, check your wallet", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
 {"id": "gap_00393", "text": "Kwame I have sent your money, check your wallet", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
 {"id": "gap_00397", "text": "Kojo I have sent your money, check your wallet", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00399", "text": "Please buy me credit, I'll refund you tonight", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00400", "text": "Please buy me credit, I'll refund you at 3pm", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00401", "text": "Please buy me credit, I'll refund you next week", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00402", "text": "Please buy me credit, I'll refund you on Sunday", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00405", "text": "Please buy me credit, I'll refund you this evening", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00406", "text": "Please buy me credit, I'll refund you today", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00408", "text": "The fare to the mall is 15 cedis now", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00409", "text": "The fare to Kumasi is 15 cedis now", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00410", "text": "The fare to school is 15 cedis now", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00412", "text": "The fare to the hostel is 15 cedis now", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00413", "text": "The fare to Accra is 15 cedis now", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00415", "text": "The fare to the office is 15 cedis now", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00416", "text": "The fare to town is 15 cedis now", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00417", "text": "I paid the school fees on Sunday", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00418", "text": "I paid the school fees tonight", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00419", "text": "I paid the school fees today", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00421", "text": "I paid the school fees tomorrow", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00423", "text": "I paid the school fees next week", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00426", "text": "Let's split the bill when we meet at 8am", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00427", "text": "Let's split the bill when we meet tonight", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00428", "text": "Let's split the bill when we meet at 3pm", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00429", "text": "Let's split the bill when we meet on Friday", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00430", "text": "Let's split the bill when we meet next week", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00431", "text": "Let's split the bill when we meet on Sunday", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00434", "text": "Let's split the bill when we meet today", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00435", "text": "mum owes me from last month, I'll remind him", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00436", "text": "Adwoa owes me from last month, I'll remind him", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00437", "text": "Kofi owes me from last month, I'll remind him", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00438", "text": "Yaw owes me from last month, I'll remind him", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00439", "text": "Ama owes me from last month, I'll remind him", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00442", "text": "Kojo owes me from last month, I'll remind him", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00443", "text": "Kwame owes me from last month, I'll remind him", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00444", "text": "I withdrew the money at Accra already", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00445", "text": "I withdrew the money at the hostel already", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00446", "text": "I withdrew the money at church already", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00449", "text": "I withdrew the money at the office already", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00450", "text": "I withdrew the money at the station already", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00452", "text": "I withdrew the money at the mall already", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00453", "text": "Rent is due next week, I have kept mine", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00454", "text": "Rent is due on Sunday, I have kept mine", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00455", "text": "Rent is due at 3pm, I have kept mine", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00456", "text": "Rent is due tomorrow, I have kept mine", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00461", "text": "Rent is due today, I have kept mine", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00462", "text": "Please keep 20 cedis for me until tonight", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00463", "text": "Please keep 20 cedis for me until on Sunday", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00464", "text": "Please keep 20 cedis for me until today", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00465", "text": "Please keep 20 cedis for me until tomorrow", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00466", "text": "Please keep 20 cedis for me until at 3pm", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00468", "text": "Please keep 20 cedis for me until on Friday", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
-{"id": "gap_00469", "text": "Please keep 20 cedis for me until this evening", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00399", "text": "The fare to church is 15 cedis now", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00400", "text": "The fare to Kumasi is 15 cedis now", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00401", "text": "The fare to the office is 15 cedis now", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00402", "text": "The fare to the hostel is 15 cedis now", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00403", "text": "The fare to town is 15 cedis now", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00404", "text": "The fare to school is 15 cedis now", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00405", "text": "The fare to Tema is 15 cedis now", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00406", "text": "The fare to the mall is 15 cedis now", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00408", "text": "I paid the school fees at 3pm", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00409", "text": "I paid the school fees at 8am", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00412", "text": "I paid the school fees next week", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00414", "text": "I paid the school fees today", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00415", "text": "I paid the school fees on Sunday", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00416", "text": "I paid the school fees tomorrow", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00417", "text": "Let's split the bill when we meet on Sunday", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00418", "text": "Let's split the bill when we meet tonight", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00419", "text": "Let's split the bill when we meet today", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00421", "text": "Let's split the bill when we meet tomorrow", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00423", "text": "Let's split the bill when we meet next week", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00426", "text": "I withdrew the money at church already", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00427", "text": "I withdrew the money at Accra already", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00428", "text": "I withdrew the money at town already", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00429", "text": "I withdrew the money at the office already", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00431", "text": "I withdrew the money at the hostel already", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00433", "text": "I withdrew the money at school already", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00435", "text": "Rent is due at 8am, I have kept mine", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00436", "text": "Rent is due tomorrow, I have kept mine", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00437", "text": "Rent is due today, I have kept mine", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00438", "text": "Rent is due next week, I have kept mine", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00442", "text": "Rent is due on Sunday, I have kept mine", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00444", "text": "The transport fare has gone up again", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00453", "text": "I'm on my way, be there in about 30 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00454", "text": "I'm on my way, be there in 5 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00456", "text": "I'm on my way, be there in 2 hours", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00458", "text": "I'm on my way, be there in an hour", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00459", "text": "On my way, will reach in 5 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00460", "text": "On my way, will reach shortly", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00461", "text": "On my way, will reach very soon", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00462", "text": "On my way, will reach in about 30 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00464", "text": "On my way, will reach in 10 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00465", "text": "I'll be there in 2 hours", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00466", "text": "I'll be there in 5 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00467", "text": "I'll be there in 10 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00470", "text": "I'll be there shortly", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00471", "text": "Almost there, in 2 hours", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00472", "text": "Almost there, in 5 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00473", "text": "Almost there, in 20 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00474", "text": "Almost there, in an hour", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00476", "text": "Almost there, very soon", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00477", "text": "Just setting off, arriving very soon", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00478", "text": "Just setting off, arriving shortly", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00479", "text": "Just setting off, arriving in 20 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00480", "text": "Just setting off, arriving in about 30 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00483", "text": "Give me in an hour, I'm coming", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00484", "text": "Give me very soon, I'm coming", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00485", "text": "Give me in 5 minutes, I'm coming", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00486", "text": "Give me in 2 hours, I'm coming", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00489", "text": "I'll call you back very soon", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00490", "text": "I'll call you back in about 30 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00491", "text": "I'll call you back in 5 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00492", "text": "I'll call you back in 20 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00495", "text": "The car is coming very soon", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00496", "text": "The car is coming in 2 hours", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00497", "text": "The car is coming in 20 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00498", "text": "The car is coming in 5 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00501", "text": "We will start shortly", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00502", "text": "We will start in 20 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00503", "text": "We will start in an hour", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00506", "text": "We will start in 10 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00507", "text": "I'm leaving town now, see you in about 30 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00508", "text": "I'm leaving Tema now, see you in 20 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00509", "text": "I'm leaving the mall now, see you in 10 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00510", "text": "I'm leaving the hostel now, see you in about 30 minutes", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00511", "text": "I'm leaving the station now, see you in 2 hours", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00513", "text": "Hold on, I'll send it in an hour", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00514", "text": "Hold on, I'll send it shortly", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00517", "text": "Hold on, I'll send it very soon", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00518", "text": "Hold on, I'll send it in 2 hours", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00519", "text": "Coming in an hour, don't leave", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00520", "text": "Coming in 20 minutes, don't leave", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00521", "text": "Coming in about 30 minutes, don't leave", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00522", "text": "Coming in 2 hours, don't leave", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00524", "text": "Coming shortly, don't leave", "category": "personal", "label": "legitimate", "length_bucket": "standard", "complexity": "low"}
+{"id": "gap_00525", "text": "Chale abeg send me 150 cedis I go pay you back tomorrow", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00526", "text": "Chale abeg send me 500 cedis I go pay you back tomorrow", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00527", "text": "Chale abeg send me 200 cedis I go pay you back tomorrow", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00528", "text": "Chale abeg send me 100 cedis I go pay you back tomorrow", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00529", "text": "Abeg send me 150 cedis, I go refund you sharp sharp", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00530", "text": "Abeg send me 100 cedis, I go refund you sharp sharp", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00531", "text": "Abeg send me 200 cedis, I go refund you sharp sharp", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00532", "text": "Abeg send me 300 cedis, I go refund you sharp sharp", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00533", "text": "Please send me GHS150 today, I will pay back next week", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00534", "text": "Please send me GHS100 today, I will pay back next week", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00535", "text": "Please send me GHS200 today, I will pay back next week", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00536", "text": "Please send me GHS50 today, I will pay back next week", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00537", "text": "Bro send me 150 cedis quick, I dey for trouble", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00538", "text": "Bro send me 50 cedis quick, I dey for trouble", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00539", "text": "Bro send me 500 cedis quick, I dey for trouble", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00541", "text": "Kindly send me GHS500, I will return it next week", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00542", "text": "Kindly send me GHS100, I will return it next week", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00543", "text": "Kindly send me GHS100, I will return it tomorrow", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00544", "text": "Kindly send me GHS500, I will return it tomorrow", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00545", "text": "Please I need GHS50 urgently, send to this number", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00546", "text": "Please I need GHS300 urgently, send to this number", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00547", "text": "Please I need GHS150 urgently, send to this number", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00548", "text": "Please I need GHS100 urgently, send to this number", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00549", "text": "Send me small money 200 cedis, I go pay you", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00551", "text": "Send me small money 50 cedis, I go pay you", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00552", "text": "Send me small money 100 cedis, I go pay you", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00553", "text": "Abeg borrow me GHS500 till month end", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00555", "text": "Abeg borrow me GHS150 till month end", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00556", "text": "Abeg borrow me GHS300 till month end", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00557", "text": "Please buy me credit, I will refund you later", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00561", "text": "Keep GHS50 for me and send it to this number", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
+{"id": "gap_00563", "text": "Keep GHS500 for me and send it to this number", "category": "impersonation", "label": "illegitimate", "length_bucket": "standard", "complexity": "medium"}
