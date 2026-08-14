@@ -264,7 +264,49 @@ else:
 
 
 # ---------------------------------------------------------------------------
-# STEP 7: obfuscation_validation_set.jsonl -- deliberately NOT loaded here.
+# STEP 7: gap_fill.jsonl -- coverage for three families adversarial testing
+# found missing entirely: investment/ponzi scams, softly-worded OTP/code
+# requests, and ORDINARY PERSONAL MESSAGES. The corpus was previously all
+# telco/bank/scam traffic, so plain human conversation ("are we still
+# meeting at 4pm?") scored 0.70 and was flagged -- the model had simply
+# never seen a normal text message.
+# ---------------------------------------------------------------------------
+count_gap_added = 0
+count_gap_skipped = 0
+try:
+    gap_file = open(f"{UPLOAD_DIR}/gap_fill.jsonl", encoding="utf-8")
+except FileNotFoundError:
+    print("No gap_fill.jsonl -- skipping")
+else:
+    print("Loading gap_fill.jsonl ...")
+    with gap_file:
+        for line in gap_file:
+            line = line.strip()
+            if not line:
+                continue
+            row = json.loads(line)
+
+            text = row["text"]
+            if text in seen_normalized_texts:
+                count_gap_skipped += 1
+                continue
+
+            label = 0 if row["label"] == "legitimate" else 1
+
+            add_row(
+                text=text,
+                normalized_text=None,
+                label=label,
+                category=row.get("category", "unknown"),
+                mechanism="unknown",
+                source_file="gap_fill",
+            )
+            count_gap_added += 1
+    print(f"  added {count_gap_added} new rows, skipped {count_gap_skipped} duplicates")
+
+
+# ---------------------------------------------------------------------------
+# STEP 8: obfuscation_validation_set.jsonl -- deliberately NOT loaded here.
 # It stays untouched in data/raw for a separate evaluation script.
 # ---------------------------------------------------------------------------
 print("Skipping obfuscation_validation_set.jsonl on purpose (held-out test set)")

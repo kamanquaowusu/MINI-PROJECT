@@ -118,30 +118,39 @@ t_low_candidates = [t for t in grid
                     if legit_purity_below(t, val_proba, y_val) >= TARGET_SAFE_PURITY and t < T_HIGH]
 T_LOW = max(t_low_candidates) if t_low_candidates else 0.20
 
-# HARD CEILING on the safe-band cut -- the single most safety-critical
-# number in the system, because everything below it is shown to the user
-# as "Safe".
+# THE SAFE-BAND CUT -- the single most safety-critical number in the
+# system, because everything below it is what users are TOLD is safe.
 #
-# It cannot be trusted to the validation set alone: that data is
+# It is deliberately NOT derived from the validation set. That data is
 # synthetic-heavy, and on it the model is wildly overconfident (scam
 # scores pile up at ~1.0, leaving the middle nearly empty -- see
-# src/stress_test.py). A purity criterion is therefore satisfied
-# trivially and happily pushes this cut to 0.7+.
+# src/stress_test.py), so a purity criterion is satisfied trivially at
+# almost any cut. Across three retrains on essentially the same corpus
+# the derived value swung 0.74 -> 0.61 -> 0.18: that is noise, not
+# signal, and at 0.74 it shipped a model that showed real scams as Safe.
+# The derivation is still computed and printed as a diagnostic.
 #
-# Measured against REAL data instead (the 95 genuine MTN/Telecel inbox
-# messages plus realistic scams, scored through the full served
-# pipeline), scams start being shown as Safe above ~0.2: at a 0.74 cut
-# the canonical Ghanaian reversal scam "You have received money in
-# error, kindly return it" (p=0.70) displayed as Safe. At 0.15, none of
-# the realistic scams were missed, at a cost of 5/95 legit telco
-# marketing messages getting a cautious flag -- the right trade for an
-# advisory tool, where a needless warning costs a moment's doubt but a
-# missed scam costs money.
-MAX_SAFE_CUT = 0.15
-if T_LOW > MAX_SAFE_CUT:
-    print("Capping T_LOW {:.2f} -> {:.2f} (validation set is synthetic-heavy; "
-          "see MAX_SAFE_CUT rationale)".format(T_LOW, MAX_SAFE_CUT))
-    T_LOW = MAX_SAFE_CUT
+# So it is set from REAL data instead: the 95 genuine MTN/Telecel inbox
+# messages versus realistic scams spanning every family, scored through
+# the full served pipeline. A 0.74 cut showed the canonical Ghanaian
+# reversal scam "You have received money in error, kindly return it"
+# (p=0.70) as Safe.
+#
+# Chosen rule: the largest cut that misses ZERO realistic scams while
+# keeping a real margin below the lowest-scoring one. On the current
+# model realistic scams bottom out in [0.40,0.50) and genuine telco
+# traffic tops out at 0.36, so 0.40 would technically score best (1/95
+# flagged) but sits flush against the lowest scam -- no room for a scam
+# phrased slightly differently. 0.30 keeps ~0.1 of headroom, still
+# misses none, and flags only 2/95 legit messages.
+#
+# If a future retrain tempts you to raise this: don't do it to silence
+# false positives. The safe band is what users are TOLD is safe, and the
+# api/tests known-scam regression tests exist to catch exactly that move.
+CALIBRATED_SAFE_CUT = 0.30
+print("T_LOW from validation purity: {:.2f} (NOT used -- see rationale); "
+      "using calibrated {:.2f}".format(T_LOW, CALIBRATED_SAFE_CUT))
+T_LOW = CALIBRATED_SAFE_CUT
 
 print("=" * 55)
 print("CHOSEN THRESHOLDS (from validation)")

@@ -135,15 +135,32 @@ def _suspicious_link_text(text: str) -> Optional[str]:
     return "Contains a link — check where it really leads"
 
 
+# Social-engineering phrasing that asks for a one-time code WITHOUT ever
+# saying "PIN"/"OTP" and without a hard action verb -- "kindly assist with
+# the code you received", "read me the numbers that came to your phone".
+# Requires the code/number/message to be described as having been SENT TO
+# THE RECIPIENT, which is what separates it from a legitimate "your OTP is
+# 1234" notification.
+RE_SOFT_CODE_REQUEST = re.compile(
+    r"\b(code|digits?|numbers?|figures?|message|sms)\b[^.!?]{0,40}\b"
+    r"(you (just )?(received|got)|sent to you|came to your (phone|number|line)|"
+    r"was sent to you|you received)\b",
+    re.I,
+)
+
+
 def _pin_request_fires(text: str) -> bool:
     action_m = RE_PIN_ACTION.search(text)
     term_m = RE_PIN_TERM.search(text)
-    if not (action_m and term_m):
-        return False
-    window = text[max(0, action_m.start() - 25):action_m.start()]
-    if RE_PIN_NEGATION.search(window):
-        return False
-    return True
+    if action_m and term_m:
+        window = text[max(0, action_m.start() - 25):action_m.start()]
+        if not RE_PIN_NEGATION.search(window):
+            return True
+    # Soft phrasing: someone asking for a code that was sent to YOU is a
+    # code-harvesting attempt regardless of how politely it's worded.
+    if RE_SOFT_CODE_REQUEST.search(text) and not RE_PIN_NEGATION.search(text):
+        return True
+    return False
 
 
 def _detect_signals(text: str, model_result: dict, category: str, high_severity: Optional[Set[str]]):

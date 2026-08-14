@@ -154,6 +154,10 @@ KNOWN_SCAMS = [
     "MTN: You have won GHS10,000! Call 0245678901 to claim your prize.",
     "I am your uncle, I lost my phone. Send GHS300 to this new number.",
     "Your MoMo account has been blocked. Send your PIN to unlock.",
+    # Families found missing by adversarial testing against the live site.
+    "Invest GHS500 in forex and get GHS5000 in one week guaranteed",
+    "Kindly assist with the code you received",
+    "Please help me with the code that just came to your phone",
 ]
 
 
@@ -177,6 +181,15 @@ def test_real_telco_messages_are_not_flagged(client):
         "Y'ello! you have received 500 MB free data valid for 3 days.",
         "GHs 15.00 has been added to your account and will be deducted from your next recharge or bundle activation. GHs 1.50 has been charged as service fee. Dial *505# anytime for more SOS Credit",
         "Send money to any Bank account with Telecel Cash. Simply Dial *110# Choose Option 1 then Option 3 to start.",
+        # Ordinary human conversation -- users paste these when unsure about
+        # an unknown sender, and the corpus previously contained none, so
+        # the model flagged them.
+        "Hi, are we still meeting at 4pm today?",
+        "I'm on my way, be there in 10 minutes",
+        "Good morning, hope you slept well",
+        # A genuine OTP notification must NOT trip the soft-code heuristic:
+        # it TELLS you a code, it doesn't ask you for one.
+        "Your OTP is 483920. Do not share it with anyone.",
     ]
     for message in legit:
         r = client.post("/api/check", json={"message": message, "consent_to_log": False})
